@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>前端性能优化-JS | 爱笑de芒果</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">前端性能优化-JS</h1><a id="logo" href="/.">爱笑de芒果</a><p class="description">愿得方田半亩，种花种树种春风！</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">前端性能优化-JS</h1><div class="post-meta">Jun 8, 2015<span> | </span><span class="category"><a href="/categories/JS/">JS</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><div class="clear"><div id="toc" class="toc-article"><div class="toc-title">文章目录</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、关注作用域"><span class="toc-number">1.</span> <span class="toc-text">一、关注作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-避免全局查找"><span class="toc-number">1.1.</span> <span class="toc-text">1.避免全局查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-避免增加不必要的作用域——缩短作用域链"><span class="toc-number">1.2.</span> <span class="toc-text">2.避免增加不必要的作用域——缩短作用域链</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、选择正确的数据结和算法"><span class="toc-number">2.</span> <span class="toc-text">二、选择正确的数据结和算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-数据结构的选择"><span class="toc-number">2.1.</span> <span class="toc-text">1.数据结构的选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-选择合适的算法"><span class="toc-number">2.2.</span> <span class="toc-text">2.选择合适的算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、最小化语句块"><span class="toc-number">3.</span> <span class="toc-text">三、最小化语句块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、优化DOM交互"><span class="toc-number">4.</span> <span class="toc-text">四、优化DOM交互</span></a></li></ol></div></div><div class="post-content"><link href="http://github.com/yrgoldteeth/darkdowncss/raw/master/darkdown.css" rel="stylesheet"> 
+
+<p>作为一个有格调的前端工程师，前端中的性能优化是提高我们B格的重要技能之一。亲爱的们，今天我们就来聊聊在写Js代码的时候如何关注性能优化方面的问题。其实研究完之后才发现，很多都是我们平时在写代码时常遇到的，只要平时写代码的时候多注意这些规则就行，但是要做到极致还是得费点功夫的。</p>
+<a id="more"></a>
+<hr>
+<h3 id="一、关注作用域"><a href="#一、关注作用域" class="headerlink" title="一、关注作用域"></a>一、关注作用域</h3><p> 作用域是变量可有效访问的环境范围。当访问一个变量的时候是有当前执行环境的作用域沿着作用域链向包含它（当前作用域）的父级作用域一层一层向上查找的。规则：找到即返回。<br> 所以只要减少在作用域链上的时间，就能提高脚本的整体性能。</p>
+<h4 id="1-避免全局查找"><a href="#1-避免全局查找" class="headerlink" title="1.避免全局查找"></a>1.避免全局查找</h4><p>将在一个作用域中要经常使用到的全局变量，存储为当前的局部变量————以空间换时间的策略。</p>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var msg=&quot;我是一个全局变量&quot;;</div><div class="line"></div><div class="line">function test(argument) &#123;</div><div class="line">    var tmpMsg=msg;//将全局变量存储为局部函数变量</div><div class="line">	for (var i = 1000 - 1; i &gt;= 0; i--) &#123;</div><div class="line">		console.log(tmpMsg+i);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="2-避免增加不必要的作用域——缩短作用域链"><a href="#2-避免增加不必要的作用域——缩短作用域链" class="headerlink" title="2.避免增加不必要的作用域——缩短作用域链"></a>2.避免增加不必要的作用域——缩短作用域链</h4><p> 主要的使用场景就是—不使用with语句。因为with语句会增长作用域链的长度，当在with作用域中执行的代码需要查找外部变量时，肯定会比较耗时。</p>
+<h3 id="二、选择正确的数据结和算法"><a href="#二、选择正确的数据结和算法" class="headerlink" title="二、选择正确的数据结和算法"></a>二、选择正确的数据结和算法</h3><h4 id="1-数据结构的选择"><a href="#1-数据结构的选择" class="headerlink" title="1.数据结构的选择"></a>1.数据结构的选择</h4><ul>
+<li>使用【字面量和基础类型变量\数组】，获取值的时间复杂度被认为是O(1)</li>
+<li><p>访问对象上的变量时间复杂度高于【字面量和基础类型变量\数组】 </p>
+<p><strong>所以一旦一个对象属性多次被用到的话，应该将其存储在局部变量中。</strong></p>
+</li>
+</ul>
+<h4 id="2-选择合适的算法"><a href="#2-选择合适的算法" class="headerlink" title="2.选择合适的算法"></a>2.选择合适的算法</h4><ul>
+<li><p><strong>优化循环体</strong></p>
+<ol>
+<li>减值循环</li>
+<li>优化终止条件语句</li>
+<li>简化循环体语句</li>
+<li>如果可以的话，尽量使用后测循环</li>
+<li>当循环的次数是确定的，而且循环次数较短可以使用多次函数调用消除循环更加快；</li>
+<li>DUff装置技术——通过计算迭代次数是否为8的倍数将一个循环展开为一系列语句。</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p><strong>避免使用双重解析语句</strong></p>
+<p><code>eval(&quot;str&quot;)函数、new Function（&quot;str&quot;）、setTimeout(&quot;str&quot;,200);</code><br>这些函数中的str在第一次解析的时候会被当成字符型。第二次解析才是语句。</p>
+</li>
+</ul>
+<ul>
+<li><strong>其他</strong><ol>
+<li>使用原生方法</li>
+<li>如果是复杂一系列的if语句，可以缓存switch语句</li>
+<li>位运算比较快</li>
+</ol>
+</li>
+</ul>
+<h3 id="三、最小化语句块"><a href="#三、最小化语句块" class="headerlink" title="三、最小化语句块"></a>三、最小化语句块</h3><ol>
+<li><p>合并变量声明语句；</p>
+<p><code>var i, j=1,w=2;</code></p>
+</li>
+<li><p>合并迭代值</p>
+<p> <code>v=arr[i++];</code></p>
+</li>
+<li><p>使用数组和对象字面量声明相应的数据变量<br>一般的创建数组和对象的方法有两种：构造函数和对象字面量。因为使用构造函数声明相当与执行一个函数的多个语句；而字面量则可以将这些操作在一个语句中完成。</p>
+<p><code>var str=[];</code></p>
+</li>
+</ol>
+<h3 id="四、优化DOM交互"><a href="#四、优化DOM交互" class="headerlink" title="四、优化DOM交互"></a>四、优化DOM交互</h3><ol>
+<li><p>减少现场更新<br>通俗的说就是减少对DOM的增、删、改的次数。<br>每次对DOM进行一次上面的操作都会导致回流，重新渲染一次。</p>
+<p>例如：可以创建一个DOM 的 fragment来临时存放要 插入的dom片段。最后只执行一次插入即可。</p>
+<ol>
+<li><p>使用事件代理</p>
+</li>
+<li><p>注意HTMLConlection 对象</p>
+</li>
+</ol>
+<p>HTMLCollection 是一个接口，表示 HTML 元素的集合，它提供了可以遍历列表的方法和属性。 要访问它的属性和方法，都是在文档上面进行查询，开销昂贵。所以应该使用存储临时变量来访问。</p>
+</li>
+</ol>
+</div><script type="text/javascript" src="/js/share.js?v=1.0.0" async></script><a data-url="http://funlylu.blog.io/2015/06/08/js代码优化/" data-id="cj59dp7o1000u6855ge9fa89n" class="article-share-link">分享</a><div class="tags"><a href="/tags/前端性能及优化/">前端性能及优化</a></div><div class="post-nav"><a href="/2017/01/02/hello-world/" class="pre">Hello World</a><a href="/2015/05/11/JS_module/" class="next">前端模块化开发-JS</a></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://funlylu.blog.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂谈/">杂谈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/ES6转码器/" style="font-size: 15px;">ES6转码器</a> <a href="/tags/Sublime/" style="font-size: 15px;">Sublime</a> <a href="/tags/JS事件/" style="font-size: 15px;">JS事件</a> <a href="/tags/前端模块化编程/" style="font-size: 15px;">前端模块化编程</a> <a href="/tags/wap移动前端开发/" style="font-size: 15px;">wap移动前端开发</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/web兼容性/" style="font-size: 15px;">web兼容性</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GitHub/" style="font-size: 15px;">GitHub</a> <a href="/tags/前端性能及优化/" style="font-size: 15px;">前端性能及优化</a> <a href="/tags/前端构建化工具/" style="font-size: 15px;">前端构建化工具</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/18/webpack-2/">webpack之contentBase与publicPath</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/18/webpack-1/">webpack配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/18/webpack-0/">webpack工具入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/17/ES6-Class/">ES6之Class</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/Responsive -web/">移动页面布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/BOM/">《JavaScript高级程序设计》-BOM文档对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/10/bebal/">Babel转码器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/CSSLintrc/">CSSLintrc 代码校验</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/browser/">前端开发中的兼容性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/github-pages/">GitHub Pages功能使用总结</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.cnblogs.com/fanglylu/" title="我的博客园" target="_blank">我的博客园</a><ul></ul><a href="https://github.com/funlylu" title="我的Github" target="_blank">我的Github</a><ul></ul><a href="http://utopia-king.cn/web-demo/" title="Demos" target="_blank">Demos</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">爱笑de芒果.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>

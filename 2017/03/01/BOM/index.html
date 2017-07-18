@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>《JavaScript高级程序设计》-BOM文档对象 | 爱笑de芒果</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">《JavaScript高级程序设计》-BOM文档对象</h1><a id="logo" href="/.">爱笑de芒果</a><p class="description">愿得方田半亩，种花种树种春风！</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">《JavaScript高级程序设计》-BOM文档对象</h1><div class="post-meta">Mar 1, 2017<span> | </span><span class="category"><a href="/categories/读书笔记/">读书笔记</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><div class="post-content"><p>  最近闲来无事回头拿起《JavaScript 高级程序设计》来啃啃，并不作为什么技术分享，只是作为自己读书的刚要，方便后面查找知识点！</p>
+<h4 id="内容概要"><a href="#内容概要" class="headerlink" title="内容概要"></a>内容概要</h4><ul>
+<li>理解window对象</li>
+<li>控制窗口、框架和弹出窗口</li>
+<li>localtion页面信息</li>
+<li>navigator浏览器对象信息</li>
+</ul>
+<h4 id="window对象"><a href="#window对象" class="headerlink" title="window对象"></a>window对象</h4><ul>
+<li>定义</li>
+</ul>
+<ol>
+<li>全局对象。</li>
+<li>访问浏览器窗口的API</li>
+</ol>
+<ul>
+<li>标准问题</li>
+</ul>
+<p>早期没规范，标准不统一。后期BOM主要部分纳入H5标准。</p>
+<ul>
+<li>全局作用域</li>
+</ul>
+<p>所有在全局作用域中定义的属性和方法都成为window的属性和方法</p>
+<h4 id="框架对象"><a href="#框架对象" class="headerlink" title="框架对象"></a>框架对象</h4><p>在有框架的页面中，window将框架保存在frames集合中。可以通过下标或者框架的name属性作为key值来进行访问操作。</p>
+<ul>
+<li>框架之间的关系</li>
+</ul>
+<p>这里只要是指父框架和子框架之间的关系。</p>
+<ol>
+<li>在父级页面中——window对象可以通过frames集合来访问子框架。</li>
+<li>子框架页面中——有top、parent两个对象来访问父级页面</li>
+</ol>
+<ul>
+<li>访问特定框架</li>
+</ul>
+<h4 id="窗口与页面文档"><a href="#窗口与页面文档" class="headerlink" title="窗口与页面文档"></a>窗口与页面文档</h4><ul>
+<li>窗口位置<br>关于浏览器的位置与大小各个浏览器厂商在实现上没有统一。在取值标准和提供的API接口上都有不同。</li>
+</ul>
+<p><strong>关于位置</strong></p>
+<ol>
+<li>IE和opera定义的是屏幕到window对象可见区域的距离，返回的值精确</li>
+<li><p>chrome 、safari 、Firefox则是屏幕到浏览器窗口的距离，而且在各种情况下返回的值并不精确</p>
+</li>
+<li><p>IE、safari、 opera chrome 提供的是screenLeft screenTop</p>
+</li>
+<li>Firefox则是screenX screenY</li>
+</ol>
+<p><strong>窗口大小</strong><br>关于窗口大小的属性有四个：innerWidth innerHight  outerWidth outerHight。</p>
+<ol>
+<li>IE8及以下版本不提供</li>
+<li>chrome中四个属性返回的都是视口大小</li>
+<li>在safari 、Firefox IE9+中outerWidth outerHight 返回浏览器窗口大小</li>
+<li>opera的标准又是其它</li>
+</ol>
+<p>本人自己测试过（2017），在新版的 Firefox IE10 chrome以及opera中现在这四个值都已经统一，<br>outer组：表示浏览器窗口大小（其中ie和火狐浏览器在窗口最大化的时候边框被隐藏了，但是计算出来的大小还是包括边框的，所以最大化的值是超过屏幕大小的）<br>inner组：表示视口大小</p>
+<p>总之最后无法在跨浏览器的情况下获取精确的窗口位置及大小值。</p>
+<h4 id="window-open"><a href="#window-open" class="headerlink" title="window.open()"></a>window.open()</h4><p>参数：url、窗口目标、描述窗口属性的字符串、是否覆盖当前页面历史记录</p>
+<ul>
+<li>打开新页面</li>
+<li>打开新窗口</li>
+<li>创建弹出窗口</li>
+</ul>
+<h4 id="系统对话框-alert、confirm及prompt"><a href="#系统对话框-alert、confirm及prompt" class="headerlink" title="系统对话框 alert、confirm及prompt"></a>系统对话框 alert、confirm及prompt</h4><p><strong>alert</strong><br>  警告框，直接输入要显示的值<br><strong>confirm</strong><br>确认框，返回true（确认）或false（取消）<br><strong>prompt</strong><br>提示框，提示用户输入相应的文本，返回用户输入的文本</p>
+<h4 id="setTimeout和-setInterval-方法"><a href="#setTimeout和-setInterval-方法" class="headerlink" title="setTimeout和 setInterval 方法"></a>setTimeout和 setInterval 方法</h4><p><strong>setTimeout</strong> 超时调用，只执行一次。clearTimeout来取消<br><strong>setInterval</strong> 定时执行 clearInterval来取消</p>
+<h4 id="localtion对象"><a href="#localtion对象" class="headerlink" title="localtion对象"></a>localtion对象</h4><p>这个对象提供了与当前加载文档相关的信息。包括主机名、端口号 url 路径名 协议等等</p>
+<p><strong>位置操作</strong></p>
+<ul>
+<li><p>assign方法</p>
+<ul>
+<li>打开一个新的url页面——产生历史记录</li>
+<li>一般有window.localtion和localtion.href调用</li>
+</ul>
+</li>
+<li><p>replace方法</p>
+</li>
+</ul>
+<p>导航到一个新的url——覆盖当前页面的历史记录</p>
+<ul>
+<li>reload </li>
+</ul>
+<ol>
+<li>reload()刷新页面   —— 有缓存则用缓存</li>
+<li>reload(true) ——强制向向服务器请求刷新页面</li>
+</ol>
+<h4 id="navigator对象"><a href="#navigator对象" class="headerlink" title="navigator对象"></a>navigator对象</h4><p>各个浏览器厂商实现方法接口不完全相同。</p>
+<ul>
+<li>判断浏览器客户端 userAgent</li>
+</ul>
+<h4 id="window其他方法"><a href="#window其他方法" class="headerlink" title="window其他方法"></a>window其他方法</h4><ul>
+<li>screen对象</li>
+<li>history对象</li>
+</ul>
+</div><script type="text/javascript" src="/js/share.js?v=1.0.0" async></script><a data-url="http://funlylu.blog.io/2017/03/01/BOM/" data-id="cj59dp7lt000068551q7ljaqs" class="article-share-link">分享</a><div class="tags"></div><div class="post-nav"><a href="/2017/04/15/Responsive -web/" class="pre">移动页面布局</a><a href="/2017/02/10/bebal/" class="next">Babel转码器</a></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://funlylu.blog.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂谈/">杂谈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/ES6转码器/" style="font-size: 15px;">ES6转码器</a> <a href="/tags/Sublime/" style="font-size: 15px;">Sublime</a> <a href="/tags/JS事件/" style="font-size: 15px;">JS事件</a> <a href="/tags/前端模块化编程/" style="font-size: 15px;">前端模块化编程</a> <a href="/tags/wap移动前端开发/" style="font-size: 15px;">wap移动前端开发</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/web兼容性/" style="font-size: 15px;">web兼容性</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GitHub/" style="font-size: 15px;">GitHub</a> <a href="/tags/前端性能及优化/" style="font-size: 15px;">前端性能及优化</a> <a href="/tags/前端构建化工具/" style="font-size: 15px;">前端构建化工具</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/18/webpack-2/">webpack之contentBase与publicPath</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/18/webpack-1/">webpack配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/18/webpack-0/">webpack工具入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/17/ES6-Class/">ES6之Class</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/Responsive -web/">移动页面布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/BOM/">《JavaScript高级程序设计》-BOM文档对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/10/bebal/">Babel转码器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/CSSLintrc/">CSSLintrc 代码校验</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/browser/">前端开发中的兼容性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/github-pages/">GitHub Pages功能使用总结</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.cnblogs.com/fanglylu/" title="我的博客园" target="_blank">我的博客园</a><ul></ul><a href="https://github.com/funlylu" title="我的Github" target="_blank">我的Github</a><ul></ul><a href="http://utopia-king.cn/web-demo/" title="Demos" target="_blank">Demos</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">爱笑de芒果.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
