@@ -36,8 +36,7 @@ body:before {
   top: 0;
   display: block;
   content: "";
-  background: url("/img/bg-2.png") no-repeat;
-  background-size: 300px;
+  background: url("/img/bg-21.png") no-repeat;
   height: 100%;
   position: absolute;
   width: 160px; }
