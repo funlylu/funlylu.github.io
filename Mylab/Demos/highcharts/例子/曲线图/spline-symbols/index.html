@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+        <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script>
+		<script src="../../js/highcharts.js"></script>
+        <script src="../../js/modules/exporting.js"></script>
+        <script src="../../js/themes/dark-green.js"></script>
+		<script type="text/javascript">
+$(function () {
+
+               var data=[{
+                name: 'Tokyo',
+                marker: {
+                    symbol: 'square'
+                },
+                data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2,{
+                    y: 26.5,
+                    marker: {
+                        symbol: 'url(http://www.highcharts.com/demo/gfx/sun.png)'//数据点带图例的
+                    }
+                }, 23.3, 18.3, 13.9, 9.6]
+    
+            }, {
+                name: 'London',
+                marker: {
+                    symbol: 'diamond'
+                },
+                data: [{
+                    y: 3.9,
+                    marker: {
+                        symbol: 'url(http://www.highcharts.com/demo/gfx/snow.png)'
+                    }
+                }, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+            }];
+			
+			
+        $('#container').highcharts({
+            chart: {
+                type: 'spline'
+            },
+            title: {
+                text: 'Monthly Average Temperature'
+            },
+            subtitle: {
+                text: 'Source: WorldClimate.com'
+            },
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+            yAxis: {
+                title: {
+                    text: 'Temperature'
+                },
+                labels: {
+                    formatter: function(){ //刻度值的显示样式定义
+                        return this.value +'°'
+                    }
+                },
+				id: 'Temper'
+            },
+            tooltip: {
+                crosshairs: true,//是否显示十字准线
+                shared: true    //多条数据序列是否共用一个数据提示框
+            },
+            plotOptions: {
+                spline: {
+                    marker: {
+                        radius: 4,
+                        lineColor: '#666666',
+                        lineWidth: 1
+                    }
+                }
+            },
+            series: data
+        });
+		
+		
+		//===========================================
+		//图表的动态化
+		 var chart=$('#container').highcharts();//获得一个图表对象
+		  //获得一个最高的温度
+		 var hight=chart.yAxis[0].getExtremes().dataMax;
+		  
+		 var options_plotline={
+				  value:hight,
+				  color:'red',
+				  width: 2,
+				  id: 'hot_month'
+		   };
+		   var yAxisoptions={
+                title: {
+                    text: 'Temperature'
+                },
+                labels: {
+                    formatter: function() { //刻度值的显示样式定义
+                        return this.value +'°'
+                    }
+                },
+				id: 'Temper'
+            };
+			
+		hasplotline=0;
+		$button_poltline=$("#hot");
+		$button_poltline.click(function(){
+		  if(!hasplotline)
+		  { 
+		   //alert(hight);
+		   chart.yAxis[0].addPlotLine(options_plotline);
+		   $button_poltline.html('hide the plotline');
+		   }
+		   else{
+		    chart.yAxis[0].removePlotLine('hot_month');
+		    $button_poltline.html('show the plotline');
+		   }
+		   hasplotline=!hasplotline;   
+		});
+		
+		$button_remove=$("#remove");
+		var hasremove=0;
+		$button_remove.click(function(){
+		  if(!hasremove)
+		  {
+		   
+		   chart.get('Temper').remove();//怎么做到移除的时候不要移除数据
+		   $(this).html('add yAxis');
+		  }
+		   else{
+		    chart.addAxis(yAxisoptions,false);//这个布尔值指定的是添加的坐标轴是作为X还是作为Y默认是Y
+		     $(this).html('remove yAxis');
+		   }
+		   hasremove=!hasremove;
+		});		
+    });
+		</script>
+	</head>
+<body>
+<!--<h3>实例2 曲线图</h3>
+<p>该实例展示了以图片作为</p>-->
+</div>
+<div align="center"><h2>曲线图表样例</h2></div>
+<div id="container" style="width: 800px; height: 400px; margin:0 auto;"></div>
+<div id="button" style="margin-left:35%;margin-top:30px"><button id='hot' style="height:40px;"> show the hot month</button></div>
+<!-- <button id='remove'>remove the xAxis</button> -->
+</div>
+	</body>
+</html>

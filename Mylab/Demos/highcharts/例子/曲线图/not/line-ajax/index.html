@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script>
+		<script src="../../js/highcharts.js"></script>
+		<script src="../../js/modules/data.js"></script>
+		<script src="../../js/modules/exporting.js"></script>
+		<script type="text/javascript">
+$(function () {
+
+    // Register a parser for the American date format used by Google
+    Highcharts.Data.prototype.dateFormats['m/d/Y'] ={
+        regex: '^([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2})$',//数据格式
+        parser: function (match){
+            return Date.UTC(+('20' + match[3]), match[1] - 1, +match[2]);
+        }
+    };
+
+    // Get the CSV and create the chart 通过利用getJSON方法从网页上获取数据进行图表的显示
+    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
+        
+        $('#container').highcharts({
+
+            data: { //aip中没有看到这个属性？？？这是怎么回事
+                csv: csv
+            },
+
+            title: {
+                text: 'Daily visits at www.highcharts.com'
+            },
+
+            subtitle: {
+                text: 'Source: Google Analytics'
+            },
+
+            xAxis: {
+                type: 'datetime',
+                tickInterval: 7 * 24 * 3600 * 1000, // one week
+                tickWidth: 1,
+                gridLineWidth: 1,
+                labels: {//x轴标签设置
+                    align: 'left',
+                    x: 3,//相对于刻度的偏移量
+                    y: -3
+                }
+            },
+
+            yAxis: [{ // left y axis
+                title: {
+                    text: null
+                },
+                labels: {
+                    align: 'left',
+                    x: 3,
+                    y: 16,
+                    formatter: function() {
+                        return Highcharts.numberFormat(this.value, 0);
+                    }
+                },
+                showFirstLabel: false
+            }, { // right y axis
+                linkedTo: 0,
+                gridLineWidth: 0,
+                opposite: true,
+                title: {
+                    text: null
+                },
+                labels: {
+                    align: 'right',
+                    x: -3,
+                    y: 16,
+                    formatter: function() {
+                        return Highcharts.numberFormat(this.value, 0);
+                    }
+                },
+                showFirstLabel: false
+            }],
+
+            legend: {
+                align: 'left',
+                verticalAlign: 'top',
+                y: 20,
+                floating: true,
+                borderWidth: 0
+            },
+
+            tooltip: {
+                shared: true,
+                crosshairs: [true,true] //是否显示十字准线
+            },
+
+            plotOptions: {
+                series: {
+                    cursor: 'pointer',
+                    point: {
+                        events: {
+                            click: function() {
+                                hs.htmlExpand(null, {
+                                    pageOrigin: {
+                                        x: this.pageX,
+                                        y: this.pageY
+                                    },
+                                    headingText: this.series.name,
+                                    maincontentText: Highcharts.dateFormat('%A, %b %e, %Y', this.x) +':<br/> '+
+                                        this.y +' visits',
+                                    width: 200
+                                });
+                            }
+                        }
+                    },
+                    marker: {
+                        lineWidth: 1//数据点标记和线的边距
+                    }
+                }
+            },
+
+            series: [{
+                name: 'All visits',
+                lineWidth: 4,
+                marker: {
+                    radius: 4
+                }
+            }, {
+                name: 'New visitors'
+            }]
+        });
+    });
+
+});
+
+
+		</script>
+	</head>
+<body>
+
+
+<!-- Additional files for the Highslide popup effect 单击数据点时，有一个弹出窗口显示该点的数据-->
+<script type="text/javascript" src="http://www.highcharts.com/highslide/highslide-full.min.js"></script>
+<script type="text/javascript" src="http://www.highcharts.com/highslide/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="http://www.highcharts.com/highslide/highslide.css" />
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>

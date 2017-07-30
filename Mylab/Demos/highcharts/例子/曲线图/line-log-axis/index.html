@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+        $('#container').highcharts({
+            
+            title: {
+                text: 'Logarithmic axis demo'
+            },
+            
+            xAxis: {
+                tickInterval: 1//刻度间距设定
+            },
+            
+            yAxis: {
+			
+			      title:{
+				        text: 'log'
+				    },
+                type: 'logarithmic', //设定y轴数据对数递增
+                minorTickInterval: 0.1//副刻度递增数量级设定
+            },
+            
+            tooltip: { //提示框显示的数据格式的设定
+                headerFormat: '<b>{series.name}</b><br />',
+                pointFormat: 'x = {point.x}, y = {point.y}'
+            },
+            
+            series: [{ 
+				   marker:{
+					symbol:'diamond'
+				   },
+                data: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
+                pointStart: 1 //数据点起始位置
+            }]
+        });
+    });
+    
+
+		</script>
+	</head>
+	<body>
+<script src="../../js/highcharts.js"></script>
+<script src="../../js/modules/exporting.js"></script>
+<script src="../../js/themes/dark-unica.js"></script>
+
+<div id="container" style="width: 800px; height: 500px; margin: 0 auto"></div>
+
+	</body>
+</html>

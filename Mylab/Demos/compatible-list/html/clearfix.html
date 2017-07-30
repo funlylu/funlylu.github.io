@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		 <style>
+/* Clear float */
+.clearfix {
+    *zoom: 1;/*给IE7以下版本识别的清楚浮动的（因为它们不识别after 这个伪类），这些版本的IE触发haslayout便可以清除浮动*/
+}
+.clearfix:before,
+.clearfix:after {
+    display: table;/*是块级即可*/
+    line-height: 0;
+    content: "";/*必要*/
+}
+.clearfix:after {
+    clear: both;/*必要*/
+}
+	.ul5 li{   
+		list-style: none;
+		float: left; 
+		}
+	  .ul5	li a{
+		background:#CCC;
+		text-decoration:none;
+		/*数值和中文混写导致错位，设置统一行高 */
+		/*line-height: 20px;*/
+		}
+	.ul5 li a:hover {background:#BBB;}
+      </style>     
+       <hr>
+       <!-- 清除浮动要在最外层 -->    
+       <ul class="ul5 clearfix">
+		<li><a href="#">清除浮动显示正常</a><a href="#">1清除浮动显示正常</a></li>
+		<li class=""><a href="#">第2条连接</a></li>
+		<li class=""><a href="#">第3条连接</a></li>
+      </ul>
+      <!-- ie6以下版本div的高度最小为21px 。要记得清除浮动，不然下面的div在ie7以下版本会显示错位-->
+      <div style="border:1px solid red; height:22px;"></div> 
+	</body>
+</html>

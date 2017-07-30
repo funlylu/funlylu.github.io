@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DataTable</title>
+    <!--第一步：引入Javascript / CSS （CDN）-->
+    <!-- DataTables CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css"> -->
+    <link rel="stylesheet" href="./lib/table/css/dataTable-purple.css">
+    <!-- jQuery -->
+    <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <!-- DataTables -->
+    <!-- <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script> -->
+    <script src="./lib/table/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+    <!-- panel-->
+    <div class="panel" style="width: 50%;">
+        <div class="panel-header center">
+            <div class="title">基础表格</div>
+        </div>
+        <div class="panel-body">
+            <!--第二步：添加如下 HTML 代码-->
+            <table id="table_0_example" width="100%" cellspacing="0" class="display">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jay</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>Lucy</td>
+                        <td>17</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- panel-->
+    <!-- table-2 -->
+    <div class="panel" style="width: 80%;">
+        <div class="panel-body no-border">
+            <table class="display" id="table_1_example" cellspacing="0" width="100%">
+                <thead class="gray">
+                    <tr>
+                        <th>MAC地址</th>
+                        <th>IP地址</th>
+                        <th>用户数</th>
+                        <th>当前速度（KB/s）</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>22:33:33:4D:22</td>
+                        <td>192.168.11.122</td>
+                        <td>23</td>
+                        <td>1000</td>
+                        <td>在线</td>
+                    </tr>
+                    <tr>
+                        <td>DD:33:33:4D:22</td>
+                        <td>192.168.11.110</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>离线</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- table-2 -->
+    <!-- Panel begin -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="title">广域网接口</div>
+        </div>
+        <div class="panel-body no-border">
+            <!-- Table begin -->
+            <div>
+                <table class="display" width="100%" cellspacing="0" id="tableWan">
+                    <thead>
+                        <tr>
+                            <th>接口</th>
+                            <th>类型</th>
+                            <th>IP地址</th>
+                            <th>网关</th>
+                            <th>DNS服务器</th>
+                            <th>接收/发送速率</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <!-- Table end -->
+        </div>
+    </div>
+    <!-- Panel end -->
+    <!--第三步：初始化Datatables-->
+    <script>
+    var url = {
+        wanList: "./data/routStatus.wan.list.json"
+    };
+    var tableWan = $("#tableWan"),
+        dTableWan = null;
+    // set speed rate
+    var setSpeedFun = function(a) {
+        var data = a + "Bps";
+        if (a > 1024 && a < 1024 * 1024) {
+            data = Math.round(a / 1024) + "KBps";
+        }
+        if (a > 1024 * 1024) {
+            data = Math.round(a / (1024 * 1024)) + "MBps";
+        }
+        return data;
+    }
+    var setWan = function(){
+		var t = $(this),
+		    name = t.attr("data-name"),
+			status = t.attr("data-status"),
+			actionName = (status==1)?"禁用":"启用",
+			action = (status==1)?0:1;
+		if (!confirm("确定"+" "+actionName+" "+name+"吗？")){ return false; };
+		$.ajax({
+			url: url.wanList,
+			data: {action:action,interface:name},
+			dataType: 'json',
+			cache: false,
+			success: function(json){
+				t.attr("data-status",action);
+				t.text((action==1)?"禁用":"启用");
+			}
+		});
+	};
+    var setWanList = function() {
+        dTableWan = tableWan.DataTable({
+            serverSide: true,
+            ajax: {
+                url: url.wanList,
+                data:{"model":'all'} //附加数据
+            },
+            // "data": data,
+            aLengthMenu: [10000],
+            dom: '<"dataTables_body"t>', //不带footer
+            columns: [
+                { data: "interface" },
+                { data: "proto" },
+                { data: "ip" },
+                { data: "gateway" },
+                { data: "dns" },
+                {
+                    data: "tx",
+                    render: function(data, type, row) {
+                        return setSpeedFun(row.rx) + "/" + setSpeedFun(row.tx);
+                    }
+                },
+                {
+                    data: "status",
+                    render: function(data, type, row) {
+                        return "<a href=\"javascript:void(0);\" data-status=\"" + data + "\" class=\"btnSetWan\" data-name=\"" + row.interface + "\">" + ((data == 1) ? "禁用" : "启用") + "</a>";
+                    }
+                }
+            ]
+        }).on('draw.dt', function() {
+          // 表格重绘 回调处理
+        }).on('init.dt', function() {
+        	// 表格初始化完成回调处理
+			$("a.btnSetWan").unbind("click").bind('click',setWan);
+        }).on('xhr.dt', function(e, settings, json) {
+            if (!json) { return false; }
+        });
+
+    };
+
+    $(document).ready(function() {
+        // 可排序的表格
+        $('#table_0_example').DataTable({
+            "ordering": true,
+        });
+
+        // 带查找框的表格
+        $('#table_1_example').DataTable({
+            "searching": true
+        });
+
+        // 从服务器端获取数据的表格
+        setWanList();
+    });
+    </script>
+</body>
+
+</html>

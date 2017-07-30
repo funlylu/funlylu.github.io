@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+    <style>
+        /*page css reset*/
+        
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        h3,
+        i {
+            font-style: normal;
+            font-weight: normal;
+        }
+        
+        body {
+            font-family: arial;
+            color: #333;
+            font-size: 13px;
+            word-wrap: break-word;
+        }
+        
+        .content {
+            margin: 100px;
+        }
+        /*file upload*/
+        
+        .fileupload {
+            position: relative;
+            display: block;
+            height: 35px;
+            width: 200px;
+            border: 1px solid #ccc;
+            line-height: 35px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .file-check {
+            display: block;
+            height: 35px;
+            width: 70px;
+            border: 1px solid #ccc;
+            background: #B2E3E1;
+        }
+        
+        .file-check:hover {
+            opacity: 0.5;
+        }
+        
+        .file-check>span {
+            position: absolute;
+            top: center;
+            color: #fff;
+        }
+        
+        .file-check input[type="file"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 35px;
+            width: 200px;
+            opacity: 0;
+        }
+        
+        #file-path {
+            position: absolute;
+            top: 0px;
+            left: 70px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <span class="fileupload">
+      <a href="javascript:;" class="file-check">
+        <span>请选择文件</span>
+        <input type="file" id="btn" class="input-file">
+        </a>
+        <span id="file-path"></span>
+        </span>
+    </div>
+    <script>
+        var btn = document.getElementById("btn")
+        btn.onchange = function() {
+            document.getElementById("file-path").innerHTML = btn.value;
+        }
+    </script>
+</body>
+
+</html>

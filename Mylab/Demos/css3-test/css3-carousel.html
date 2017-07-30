@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>CSS3动画实现轮播</title>
+</head>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .d0 {
+        width: 900px;
+        height: 500px;
+        margin: 0 auto;
+        margin-top: 50px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .d1 {
+        width: 400%;
+        height: 100%;
+        position: absolute;
+        left: -900px;
+    }
+    
+    .carousel {
+        -webkit-animation: carousel 10s cubic-bezier(.02, .97, .02, .97) 2s infinite alternate;
+        -o-animation: carousel 10s cubic-bezier(.02, .97, .02, .97) 2s infinite alternate;
+        animation: carousel 10s cubic-bezier(.02, .97, .02, .97) 2s infinite alternate;
+    }
+    
+    .carousel-trans {
+        -webkit-animation: carousel-trans 20s cubic-bezier(.02, .97, .02, .97) 2s infinite normal;
+        -o-animation: carousel-trans 20s cubic-bezier(.02, .97, .02, .97) 2s infinite normal;
+        animation: carousel-trans 20s cubic-bezier(.02, .97, .02, .97) 2s infinite normal;
+    }
+    
+    .d2 {
+        background: #FF0088;
+    }
+    
+    .d3 {
+        background: #00A9A3;
+    }
+    
+    .d4 {
+        background: #01B552;
+    }
+    
+    .d5 {
+        background: #867578;
+    }
+    
+    .d2,
+    .d3,
+    .d4,
+    .d5 {
+        width: 900px;
+        height: 500px;
+        float: left;
+        text-align: center;
+        font-size: 20px;
+        color: #fff;
+    }
+    
+    @keyframes carousel {
+        0% {
+            left: -100%;
+        }
+        25%,
+        50% {
+            left: -100%;
+        }
+        50%,
+        75% {
+            left: -200%;
+        }
+        76%,
+        100% {
+            left: -300%;
+        }
+    }
+    
+    @keyframes carousel-trans {
+        21%,
+        40% {
+            -webkit-transform: translateX(-25%);
+            -ms-transform: translateX(-25%);
+            -o-transform: translateX(-25%);
+            transform: translateX(-25%);
+        }
+        41%,
+        60% {
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+        61%,
+        80% {
+            -webkit-transform: translateX(-75%);
+            -ms-transform: translateX(-75%);
+            -o-transform: translateX(-75%);
+            transform: translateX(-75%);
+        }
+        81%,
+        100% {
+            -webkit-transform: translateX(0%);
+            -ms-transform: translateX(0%);
+            -o-transform: translateX(0%);
+            transform: translateX(0%);
+        }
+    }
+</style>
+
+<body>
+    <div class="d0">
+        <!--100-->
+        <div class="d1 carousel">
+            <!--400-->
+            <div class="d2">动画轮播效果页0</div>
+            <!--100-->
+            <div class="d3">动画轮播效果页1</div>
+            <div class="d4">动画轮播效果页2</div>
+            <div class="d5">动画轮播效果页3</div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<!--
+  
+     animation-name: luubo;
+       animation-duration:20s;/*动画完成一周期需要的时间*/
+       animation-timing-function:cubic-bezier(.02,.97,.02,.97);/*速度曲线：cubic-bezier(.02,.97,.02,.97)*/
+       -webkit-animation-delay:1s;
+       animation-delay:1s;/*动画延迟几秒开始*/
+       animation-iteration-count:infinite;/*动画被播放的次数*/
+       animation-direction:alternate;/*循环轮播*/
+  
+-->

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>书签样式的图标</title>
+    <style type="text/css">
+        .bookmark-1 {
+            display: block;
+            margin: 10px;
+            position: relative;
+            height: 10px;
+            width: 80px;
+            text-align: center;
+            line-height: 11px;
+            background: #FA8072;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            font-weight: bold;
+        }
+        
+        .bookmark-1:before {
+            position: absolute;
+            content: "";
+            display: inline-block;
+            border: 15px solid transparent;
+            border-right: 15px solid #FA8072;
+            left: -30px;
+            top: 0;
+        }
+        
+        .bookmark-1:after {
+            position: absolute;
+            content: "";
+            display: inline-block;
+            height: 8px;
+            width: 8px;
+            background: #fff;
+            border-radius: 50%;
+            right: 95%;
+            z-index: 999;
+        }
+        
+        .bookmark-2 {
+            width: 100px;
+            height: 0;
+            border-top: 20px solid #A26D14;
+            border-bottom: 20px solid #A26D14;
+            border-right: 10px solid transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin: 100px;">
+        <a href="" class="bookmark-1"><span class="bor"></span>杂谈</a>
+        <a href="" class="bookmark-1"><span class="bor"></span>生活</a>
+        <a href="" class="bookmark-1"><span class="bor"></span>日记</a>
+        <a href="" class="bookmark-1"><span class="bor"></span>学习</a>
+        <div class="bookmark-2">生活</div>
+        <div class="bookmark-2">健康</div>
+        <div class="bookmark-2">理财</div>
+    </div>
+</body>
+
+</html>

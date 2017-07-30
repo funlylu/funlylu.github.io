@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+	    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script><!--jQuery文件-->
+	    <script src="../../js/highcharts.js"></script>
+		<script src="../../js/highcharts-more.js"></script>
+		<script src="../../js/modules/exporting.js"></script>
+        <script src="../../js/themes/skies.js"></script>
+		<script type="text/javascript">
+$(function () {
+    isinverted=0;
+	chart=$('#container').highcharts({
+	   
+	    //图表选项配置
+	    chart: {
+	        type: 'columnrange',
+	        inverted: false //x 轴和y轴调换位置
+	    },
+	    
+	    title: {
+	        text: 'Temperature variation by month'
+	    },
+	    
+		subtitle: {
+	        text: 'Observed in Vik i Sogn, Norway, 2009'
+	    },
+	   
+	    xAxis: {
+	        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+	    },
+	    
+	    yAxis: {
+	        title: {
+	            text: 'Temperature ( °C )'
+	        }
+	    },
+	
+	    tooltip: {
+	        valueSuffix: '°C'
+	    },
+	    
+	    plotOptions: {
+	        columnrange: {
+	        	dataLabels: {
+	        		enabled: true,
+	        		formatter: function () {
+	        			return this.y + '°C';
+	        		}
+	        	}
+	        }
+	    },
+	    
+	    legend: {
+	        enabled: false
+	    },
+	
+	    //数据格式
+	    series: [{
+	        name: 'Temperatures',
+	        data: [
+				[-9.7, 9.4],
+				[-8.7, 6.5],
+				[-3.5, 9.4],
+				[-1.4, 19.9],
+				[0.0, 22.6],
+				[2.9, 29.5],
+				[9.2, 30.7],
+				[7.3, 26.5],
+				[4.4, 18.0],
+				[-3.1, 11.4],
+				[-5.2, 10.4],
+				[-13.5, 9.8]
+			]
+	    }]
+	}).highcharts();//返回一个图表对象
+
+	
+	
+});
+  	function inverted(chart){
+	   var options=chart.options;//获得图表对象的所有选项设定
+	   var tag=options.chart.inverted;
+	   if(tag)options.chart.inverted=false;
+	   else options.chart.inverted=true;
+	    chart.destroy();
+	  window.chart=new $('#container').highcharts(options).highcharts();//这里讲chart声明为全局变量
+   };
+
+		</script>
+	</head>
+	
+    <body style="background-color:#DCDCDC;">
+	    <div align="center" style="margin-top:5%;"><h3>柱状范围图</h3></div>
+	    <div style="float:center;margin-left:60%;">
+		<button id="column" onclick="inverted(chart);" style="width:auto;height:40px;font-size:1.2em;color: #606060;
+	border: solid 1px #b7b7b7;background: #fff;border-radius:10px">对调xy轴</button>
+		</div>
+		<div id="chart" style="float:center;margin-right:5%;margin-top:1%">
+		<div id="container" style="min-width: 310px; max-width: 800px; height: 500px; margin: 0 auto;"></div>
+		</div>
+	</body>
+</html>

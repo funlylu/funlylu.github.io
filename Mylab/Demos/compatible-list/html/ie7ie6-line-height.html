@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<style>
+			div{
+				background-color: yellowgreen;
+			}
+			span{
+				background-color: hotpink;
+			}
+			.s1{
+				float: left;/*元素浮动后变成类似块级一样的元素，可以设置宽高边距*/
+				/*margin: 10px;*/
+				/**height: 20px;*/
+			}
+			.fix{
+				/*情况一：不浮动元素*/
+				*zoom: 1;
+				*height: 20px;
+				/*情况二：浮动元素*/
+				/**line-height: 20px;*/
+				
+			}
+		</style>
+		<p>本质上是混合的字体到时baseline不统一形成的，所以只要将其设置成块元素设置高度或者行高即可解决</p>
+		<div>
+			<span>我是一个行内元素</span><span>我是行内span标签</span>
+		</div>
+		<br />
+		<div>
+			<span class="s1">我是一个行内元素</span><span class="s1">1我是行内span标签</span>
+		</div>
+		
+		<br />
+		<p>修复后</p>
+		<div>
+			<span class="fix">我是一个行内元素</span><span class="fix">1我是行内span标签</span>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>tooltip提示框</title>
+</head>
+
+<body>
+    <style type="text/css">
+        .tool {
+            margin: 100px;
+            width: 100px;
+            padding: 0;
+            position: relative;
+            border: 1px solid #00FA9A;
+        }
+        
+        .tooltip {
+            display: none;
+            position: absolute;
+            border: 1px solid #00FA9A;
+            width: 90px;
+            text-align: center;
+            background: #00FA9A;
+            box-shadow: 5px 3px 5px #00FA9A;
+        }
+        
+        .tooltip:before {
+            content: "";
+            position: absolute;
+        }
+        
+        .tool:hover .tooltip {
+            display: block;
+        }
+        /*下方提示框*/
+        
+        .tooltip-bottom {
+            top: 150%;
+            left: 50%;
+            margin-left: -45px;
+            /*向左移动提示框长度的一般,进行居中*/
+        }
+        
+        .tooltip-bottom:before {
+            bottom: 100%;
+            left: 50%;
+            margin-left: -8px;
+            border: 8px solid transparent;
+            border-bottom-color: palevioletred;
+        }
+        /*上提示框*/
+        
+        .tooltip-top {
+            top: -200%;
+            left: 50%;
+            margin-left: -45px;
+        }
+        
+        .tooltip-top:before {
+            bottom: -100%;
+            left: 50%;
+            margin-left: -8px;
+            border: 8px solid transparent;
+            border-top-color: palevioletred;
+        }
+        /*左提示框*/
+        
+        .tooltip-left {
+            top: 0;
+            right: 110%;
+            box-shadow: -2px -2px 2px palevioletred;
+        }
+        
+        .tooltip-left:before {
+            left: 100%;
+            border: 8px solid transparent;
+            border-left-color: palevioletred;
+        }
+        /*右提示框*/
+        
+        .tooltip-right {
+            top: 0;
+            left: 110%;
+        }
+        
+        .tooltip-right:before {
+            right: 100%;
+            border: 8px solid transparent;
+            border-right-color: palevioletred;
+        }
+    </style>
+    <div class="tool">
+        <span>下提示框</span>
+        <div class="tooltip tooltip-bottom">提示文本</div>
+    </div>
+    <div class="tool">
+        <span>上提示框</span>
+        <div class="tooltip tooltip-top">提示文本</div>
+    </div>
+
+    <div class="tool">
+        <span>左提示框</span>
+        <div class="tooltip tooltip-left">提示文本</div>
+    </div>
+
+    <div class="tool">
+        <span>右提示框</span>
+        <div class="tooltip tooltip-right">提示文本</div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ie6以下版本的浮动元素和非浮动元素间出现3像素BUG</title>
+	</head>
+	<body>
+	<style>
+       .d1 span{
+       	border: 1px solid #000;
+       }
+       .d1 span.info{
+       	/* 方法一： */
+       	/* float: left; */
+       	/* 方法二： */
+       	_margin-left: -3px;
+       }
+     </style>
+     <div class="d1"><span style= "float:left" >你好！你好</span><span class="info">信息信息信息。。。。。。</span></div>
+	</body>
+</html>

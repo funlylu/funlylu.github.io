@@ -1,0 +1,4 @@
+<!-- http://humanstxt.org/ZH -->
+<!-- 这是一个TXT文件，其中包含参加该网页设计和建立的人们的信息。 -->
+<!-- 应该放在哪里？
+在网站的开头部分，robots.txt傍边。如果可能的话在 <head> 内部添加 Tag author link type="text/plain" rel="author" href="http://domain/humans.txt" /> -->

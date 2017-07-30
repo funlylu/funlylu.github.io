@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="web前端开发,爱笑de芒果,个人博客,前端工程师,Hexo"><title>git命令使用 | 爱笑de芒果</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/6.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.2/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">git命令使用</h1><a id="logo" href="/.">爱笑de芒果</a><p class="description">愿得方田半亩，种花种树种春风！</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/Mylab/Demos/responsive-design/resume/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">git命令使用</h1><div class="post-meta">May 11, 2015<script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><div class="post-content"><h4 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">markdir lab-demo</div><div class="line">cd lab-demo</div><div class="line">git init</div></pre></td></tr></table></figure>
+<h4 id="clone远程仓库到本地"><a href="#clone远程仓库到本地" class="headerlink" title="clone远程仓库到本地"></a>clone远程仓库到本地</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone url</div></pre></td></tr></table></figure>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><ol>
+<li>用户身份标示</li>
+</ol>
+<p>这些信息在提交代码的时候会用到<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name "yourname"</div><div class="line">git config --global user.email yourEmail@xx.com</div></pre></td></tr></table></figure></p>
+<ol>
+<li>仓库地址变更</li>
+</ol>
+<ul>
+<li><p>命令行方式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git remote origin set-url [url]</div></pre></td></tr></table></figure>
+</li>
+<li><p>直接修改配置文件</p>
+</li>
+</ul>
+<p>.git目录下面的config文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[remote &quot;origin&quot;]</div><div class="line">    url = https://github.com/yourname/project.git</div></pre></td></tr></table></figure></p>
+<h4 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>查看工作区修改，可以看当前工作区和暂存区中的文件</div><div class="line">git status</div><div class="line"><span class="meta"></span></div><div class="line">#把要commit的修改，添加到暂存区中 git add/rm file</div><div class="line">git add  file #针对新添加或者修改的文件</div><div class="line">git rm file #针对删除的文件，因为之前以及将它添加到暂存区中，本次需要把它从暂存区移除</div><div class="line"><span class="meta"></span></div><div class="line">#提交</div><div class="line">git commit -m "变更信息提示"</div></pre></td></tr></table></figure>
+<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><ol>
+<li><p>git pull 从远程获取最新版本并merge到本地</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>获取远程主分支合并到本地</div><div class="line">git pull origin master</div></pre></td></tr></table></figure>
+</li>
+<li><p>git push 提交本地commit到远程仓库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin master</div></pre></td></tr></table></figure>
+</li>
+<li><p>git fetch 相当于是从远程获取最新版本到本地，不会自动merge</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>从远程获取最新的主分支到本地tmp分支——如果没有会自动创建</div><div class="line">git fetch origin master:tmp</div><div class="line"><span class="meta">#</span>当前分支与tmp 分支比较</div><div class="line">git diff tmp </div><div class="line"><span class="meta">#</span>将tmp分支合并到当前分支</div><div class="line">git merge tmp</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="撤销提交及恢复"><a href="#撤销提交及恢复" class="headerlink" title="撤销提交及恢复"></a>撤销提交及恢复</h4><h5 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h5><ul>
+<li>混合撤销</li>
+</ul>
+<p>撤销commit和添加到暂存区的操作，源码还在。用<code>git status</code> 仍可以看到工作区已经修改但是未被缓存的文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset commit_id #pre_commit_id是某次提交之前的上一个commit的哈希值</div></pre></td></tr></table></figure></p>
+<ul>
+<li>软撤销 </li>
+</ul>
+<p>只撤销commit，暂存区不动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --soft commit_id</div></pre></td></tr></table></figure></p>
+<ul>
+<li>硬撤销</li>
+</ul>
+<p>把代码和commit以及暂存区都恢复到pre_commit_id 那次提交<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --hard pre_commit_id #pre_commit_id是某次提交的前一个commit的哈希值</div></pre></td></tr></table></figure></p>
+<h5 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h5><p>git reset其实可以撤销也可以恢复，只要我们知道指定恢复的commit哈希值即可<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>查看我们执行过的操作，根据历史记录恢复即可</div><div class="line">git reflog</div><div class="line"><span class="meta"></span></div><div class="line">#恢复</div><div class="line">git reset --hard commit_id #commit_id要恢复到的commit哈希值</div></pre></td></tr></table></figure></p>
+<h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><ol>
+<li>创建分支</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch  new-branch-name</div></pre></td></tr></table></figure>
+<ol>
+<li><p>查看本地分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch</div></pre></td></tr></table></figure>
+</li>
+<li><p>切换分支<br>如果当前分支有未commit的变更，切换失败。需要先提交修改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout branch-name</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="/sourceMd/git-branch-3.png" alt="git"></p>
+<ol>
+<li><p>创建并切换<br>当前分支的所有，包括未提交的变更等各种修改都会被新分支共享。</p>
+<ul>
+<li>新分支commit了修改，那么原来的分支上将找不到之前的修改文件<br><em>注：这里的修改是指没有commit的</em><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b newtest</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>删除分支<br><em>不要试图删除当前分支，要切换到删除分支上进行删除操作</em></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>#删除本地分支</div><div class="line">git branch -d branchname</div><div class="line"><span class="meta"></span></div><div class="line">#删除远程分支</div><div class="line">git push origin :branchname</div></pre></td></tr></table></figure>
+</li>
+<li><p>合并分支<br>将branch1分支合并到 master主分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>先切换到主分支</div><div class="line">git checkout master</div><div class="line"><span class="meta"></span></div><div class="line">#合并</div><div class="line">git  merge</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>合并冲突</strong></p>
+<p><img src="/sourceMd/git-merge-1.png" alt="git"></p>
+<p>手工合并之后自行commit就行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">git add config</div><div class="line"></div><div class="line">git commit -m "merge"</div></pre></td></tr></table></figure></p>
+<h4 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h4><p>git 中的tag 其实是用来给某次有历史意义的提交 关联一个【语义标签】，例如某次commit之后发布版本时打一个tag。</p>
+<ol>
+<li>创建标签</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>某次commit之后</div><div class="line">git tag -s tagname -m "V1.0.0"</div><div class="line"><span class="meta"></span></div><div class="line">#补打。某次忘记了，后面可以根据commit ID 补打</div><div class="line">git tag -s tagname -m "v2.0.0" cd43676</div></pre></td></tr></table></figure>
+<ol>
+<li><p>查看所有标签</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git tag</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看某个tag的详情</p>
+</li>
+</ol>
+<p>列出tag对应的commit的详情<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git show tagname</div></pre></td></tr></table></figure></p>
+<p><img src="/sourceMd/git-tag-1.png" alt="git"></p>
+<h4 id="查看commit-历史"><a href="#查看commit-历史" class="headerlink" title="查看commit 历史"></a>查看commit 历史</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>详细</div><div class="line">git log</div><div class="line"><span class="meta">#</span>精简</div><div class="line">git log --oneline</div><div class="line"><span class="meta"></span></div><div class="line">#查看分支合并拓扑图</div><div class="line"> git log --oneline --graph</div></pre></td></tr></table></figure>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://git-scm.com/docs" target="_blank" rel="external">GitDoc</a></p>
+</div><script type="text/javascript" src="/js/share.js?v=1.0.0" async></script><a data-url="http://funlylu.blog.io/2015/05/11/git/" data-id="cj5qney1u000m7g55pb7w9pq4" class="article-share-link">分享</a><div class="tags"><a href="/tags/工具/">工具</a></div><div class="post-nav"><a href="/2015/06/08/js代码优化/" class="pre">前端性能优化-JS</a><a href="/2015/05/11/JS_module/" class="next">前端模块化开发-JS</a></div></div></div></div><div class="pure-u-1 pure-u-md-1-4"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://funlylu.blog.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂谈/">杂谈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动前端/">移动前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/web兼容性/" style="font-size: 15px;">web兼容性</a> <a href="/tags/Sublime/" style="font-size: 15px;">Sublime</a> <a href="/tags/JS事件/" style="font-size: 15px;">JS事件</a> <a href="/tags/前端模块化编程/" style="font-size: 15px;">前端模块化编程</a> <a href="/tags/wap移动前端开发/" style="font-size: 15px;">wap移动前端开发</a> <a href="/tags/ES6转码器/" style="font-size: 15px;">ES6转码器</a> <a href="/tags/ES6/" style="font-size: 15px;">ES6</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/GitHub/" style="font-size: 15px;">GitHub</a> <a href="/tags/前端性能及优化/" style="font-size: 15px;">前端性能及优化</a> <a href="/tags/前端构建化工具/" style="font-size: 15px;">前端构建化工具</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/18/webpack-2/">webpack之contentBase与publicPath</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/18/webpack-1/">webpack配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/18/webpack-0/">webpack工具入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/17/ES6-Class/">ES6之Class</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/15/Responsive -web/">移动页面布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/BOM/">《JavaScript高级程序设计》-BOM文档对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/10/bebal/">Babel转码器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/CSSLintrc/">CSSLintrc 代码校验</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/03/browser/">前端开发中的兼容性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/01/github-pages/">GitHub Pages功能使用总结</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.cnblogs.com/fanglylu/" title="我的博客园" target="_blank">我的博客园</a><ul></ul><a href="https://github.com/funlylu" title="我的Github" target="_blank">我的Github</a><ul></ul><a href="https://funlylu.github.io/Mylab/" title="我的实验室" target="_blank">我的实验室</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">爱笑de芒果.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.0.47/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>

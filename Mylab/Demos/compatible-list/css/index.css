@@ -1,0 +1,116 @@
+html,body{height: 100%;}
+.container{
+	height: 100%;
+ } 
+.pt-page-main{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.pt-page{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+	/*will-change:transform;/*触发硬件加速*/
+	visibility: hidden;
+	overflow: hidden;
+	text-align: center;
+	vertical-align: middle;
+	color: #fff;
+	font-size: 40px;
+}
+.pt-page.active{
+	visibility: visible;
+}
+/*page-1*/
+.pt-page-1{
+	background: #C3DF01;
+}
+/*page-2*/
+.pt-page-2{
+	background: #00A9A3;
+}
+/*page-3*/
+.pt-page-3{
+	background: #867578;
+}
+/*page-4*/
+.pt-page-4{
+	background: #01B552;
+}
+
+/*导航*/
+.nav{
+	position: absolute;
+	left: 2%;
+	top: 50%;
+	z-index: 999;
+}
+.nav .nav-item{
+	display: block;
+	height: 8px;
+	width: 8px;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	background-color: #fff;
+	margin-bottom: 100%;
+}
+.nav .nav-item.active{
+	background-color: transparent;
+}
+
+/*动画 ie10+*/
+.pt-page-moveToTop {
+	-webkit-animation: moveToTop .6s ease both;
+	-moz-animation: moveToTop .6s ease both;
+	animation: moveToTop .6s ease both;
+}
+.pt-page-moveFromTop {
+	-webkit-animation: moveFromTop .6s ease both;
+	-moz-animation: moveFromTop .6s ease both;
+	animation: moveFromTop .6s ease both;
+}
+.pt-page-moveToBottom {
+	-webkit-animation: moveToBottom .6s ease both;
+	-moz-animation: moveToBottom .6s ease both;
+	animation: moveToBottom .6s ease both;
+}
+.pt-page-moveFromBottom {
+	-webkit-animation: moveFromBottom .6s ease both;
+	-moz-animation: moveFromBottom .6s ease both;
+	animation: moveFromBottom .6s ease both;
+}
+
+@keyframes moveToTop {
+	100% { 
+		-webkit-transform: translateY(-100%);
+		-moz-transform: translateY(-100%);
+		transform: translateY(-100%);
+	 }
+}
+
+@keyframes moveFromTop {
+	0% { 
+		-webkit-transform: translateY(-100%);
+		-moz-transform: translateY(-100%);
+		transform: translateY(-100%); 
+	 }
+}
+@keyframes moveToBottom {
+	100% { 
+		-webkit-transform: translateY(100%);
+		-moz-transform: translateY(100%);
+		transform: translateY(100%);
+  }
+}
+
+@keyframes moveFromBottom {
+	0% { 
+		-webkit-transform: translateY(100%);
+		-moz-transform: translateY(100%);
+		transform: translateY(100%);
+	 }
+}

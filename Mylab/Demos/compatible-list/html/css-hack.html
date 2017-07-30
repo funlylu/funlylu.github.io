@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>测试</title>
+	</head>
+	<body>
+		<style>
+		
+		/*bass css*/
+		pre{
+		 width: 50%;
+		 border:1px solid #CCC;
+		 border-radius: 10px;
+		 padding: 20px;
+		 background-color: #eee;
+		 -webkit-box-shadow:  5px 5px 2px #B0E0E6;
+		 -moz-box-shadow: 5px 5px 2px #B0E0E6;
+		 box-shadow: 5px 5px 2px #B0E0E6;
+         word-wrap:break-word; 
+         word-break:break-all;
+		}
+		hr{
+		  margin:20px 0;
+		}
+		 .div{
+		     height: 20px;
+		     border: 1px solid red;
+		     /*content: "&lt;";	/*该属性用于定义元素之前或之后放置的生成内容.content 属性与 :before 及 :after 伪元素配合使用，来插入生成内容.*/*/  
+		   }	
+		/*IE浏览器hack*/
+		.d1{
+				height: 20px;
+				background-color:palegreen;
+				background-color:yellow\9;/*ie8以上版本*/
+				*background-color:purple;/*ie6 ie7*/
+				_background-color:red;	/*ie 6*/
+				+width: 20px;/*ie6 ie7*/	
+			}
+		 :root .d1{background-color:#DB7093;}/*ie9以上版本*/
+		 
+		/*IE浏览器hack*/
+		
+		/*firef浏览器hack*/
+		 @-moz-document url-prefix(){
+		 	.fire{
+		     height: 50px;
+		     background-color: #98FB98;  
+		   }
+		  }
+		 *>.fire{ background-color: palevioletred;}
+		 #fire[id=fire] { background-color: yellow;}
+		/*firef浏览器hack*/
+		
+		/*webkit内核*/
+		@media screen and (-webkit-min-device-pixel-ratio:0) { 
+			.webkit { 
+			  background-color: orange;
+			}
+	     }
+	     
+	     /*Opera浏览器*/
+	    html:first-child>body .opera{
+	    	background-color: red;
+	    }
+	    @media all and (min-width:0) { 
+	    	.opera{
+	    	 background-color:pink;
+	    	 box-shadow: 5px 5px 2px #98FB98;
+	       }
+	    }
+		</style>
+		<h4 id="ie">一、常见的IE浏览器的hack</h4>
+			<pre>
+			这里列出来的主要是属性hack，其实还有条件hack和选择器hack
+			background-color:yellow\9;/*ie8以上版本*/ <br />
+			*background-color:purple;/*ie6 ie7*/ <br />
+			_background-color:red;	/*ie 6*/<br />
+			+width: 20px;/*ie6 ie7*/<br />
+			</pre>
+		 <h6>实例测试</h6>
+		 <pre>可以在ie浏览器切换各种文档模式查看被应用的背景颜色来验证实例</pre>
+		<div class="d1">
+		</div>
+		
+		<hr />
+		<h4 id="firefox">二、Firefox浏览器</h4>
+		
+		<pre>1、支持Firefox所有版本@-moz-document url-prefix() { .selector { property: value; } }
+
+ 在网上还看到一些hack方法，经验证都不可行。下面这些设置在其它浏览器照样能被识别，作者测试了chrome和ie以及Firefox自身都能识别。
+ 例如：
+  1、支持geoko内核的浏览器  *>.selector { property: value; }
+  2、#selector[id=selector] { property: value; }</pre>
+		
+		<h6>实例测试</h6>
+		<pre>这个实例测试了上面说道的三个方法。读者可以用调试工具自行调试查看即可</pre>
+		<div class=" div fire" id="fire"></div>
+		
+		<hr />
+		<!--webkit-->
+	<h4 id="webkit">三、webkit内核</h4>
+       <pre>@media screen and (-webkit-min-device-pixel-ratio:0) { Selector { property: value; } }</pre>
+       <h6>实例测试</h6>
+       <pre>在webkit内核浏览器中背景色显示为橙色</pre>
+       <div class="div webkit"></div>
+       <hr />
+    <h4 id="opera">四、Opera浏览器</h4>
+     <pre>1、html:first-child>body Selector {property:value;}
+ 网上看到有的竟然还写了下面的方法，其实是基础不好，以讹传讹。。。。
+这个明显就是通过媒体查询和min-widht：0属性的支持情况来下的规则。根本不只是针对opera浏览器
+@media all and (min-width:10) { Selector {property: value;} }
+     
+     </pre>
+    
+    <h6>实例测试</h6>
+     <pre>本实例在opera在pc端做过测试</pre>
+     <div class="div opera"></div>
+	</body>
+</html>

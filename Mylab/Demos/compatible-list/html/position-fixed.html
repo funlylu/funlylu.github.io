@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		*{
+			margin: 0;
+			padding: 0; 
+		}
+		html,body{
+			height: 100%;
+			color: #fff;
+		}
+		.d1{
+           height: 100%;
+           width: 100%;
+           background: pink;
+		}
+		.h1{
+			position: fixed;
+			box-sizing: border-box;
+			width: 90%;
+			height:50px;
+			background: yellowgreen;
+			padding-left: 20px;
+			padding-right: 20px;
+			margin:0 auto;  
+			left:0;  
+			right:0;
+			*left: auto;  /* 兼容ie7*/
+			*right: auto;  /* 兼容ie7*/
+		}
+       .main{
+       	 height: 90%;
+       	 width: 100%;
+       	 box-sizing: border-box;
+       	 padding-top: 50px;
+       	 background: lightgoldenrodyellow;
+       	 color: #000;
+       }
+       button{
+       	height: 20px;
+       	width: 50px;
+       	background: lightcyan;
+       	border: 0;
+       }
+       .btn1{
+       	float: left;
+
+       }
+       .btn2{
+       	float: right; 
+       }
+		</style>
+	</head>
+	<body>
+		<div class="d1">
+          <div class="h1">
+          <button class="btn1">1</button>
+          <button class="btn2">2</button>
+          </div>
+          <div class="main">
+             position:fixed定位元素的居中问题；请右键查看源码！！！
+          </div>
+		</div>
+	</body>
+</html>

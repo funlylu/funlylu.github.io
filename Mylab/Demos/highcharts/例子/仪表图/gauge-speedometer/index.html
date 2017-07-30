@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script><!--jQuery文件-->
+		 <script src="../../js/highcharts.js"></script>
+         <script src="../../js/highcharts-more.js"></script>
+         <script src="../../js/modules/exporting.js"></script>
+		<script type="text/javascript">
+$(function () {
+	
+    $('#container').highcharts({
+	
+	    chart: {
+	        type: 'gauge',
+	        plotBackgroundColor: null,
+	        plotBackgroundImage: null,
+	        plotBorderWidth: 0,
+	        plotShadow: false
+	    },
+	    
+	    title: {
+	        text: 'Speedometer'
+	    },
+	    
+	    pane: { //只用于仪表图或者极性图
+	        startAngle: -150,//起始角度
+	        endAngle: 150,//终止角度
+	        background: [//仪表盘的刻度背景颜色以及相关属性的设定
+			{
+	            backgroundColor: {
+	                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },//渲染线给定两个点，起点和终点
+	                stops: [
+	                    [0, '#FFF'],
+	                    [1, '#333']
+	                ]
+	            },
+	            borderWidth: 0,
+	            outerRadius: '109%'
+	        }, {
+	            backgroundColor: {
+	                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+	                stops: [
+	                    [0, '#333'],
+	                    [1, '#FFF']
+	                ]
+	            },
+	            borderWidth: 1,
+	            outerRadius: '107%'
+	        }, {
+	            // default background
+	        }, {
+	            backgroundColor: '#DDD',
+	            borderWidth: 0,
+	            outerRadius: '105%',
+	            innerRadius: '103%'
+	        }]
+	    },
+	       
+	    // the value axis
+	    yAxis: {
+	        min: 0,
+	        max: 200,
+	        
+			//副刻度线
+	        minorTickInterval: 'auto',
+	        minorTickWidth: 1,
+	        minorTickLength:10,//刻度的长度
+	        minorTickPosition: 'inside',
+	        minorTickColor: '#666',
+	        
+			//主刻度线
+	        tickPixelInterval: 30,
+	        tickWidth: 2,
+	        tickPosition: 'inside',
+	        tickLength: 10,//刻度的长度
+	        tickColor: '#666',
+	        labels: {
+	            step: 2,//主刻度值每隔一个刻度显示一次
+	            rotation: 'auto'
+	        },
+	        title: {
+	            text: 'km/h'
+	        },
+			//给相应区域的刻度画上标示区域
+	        plotBands: [{
+	            from: 0,
+	            to: 120,
+	            color: '#55BF3B' // green
+	        }, {
+	            from: 120,
+	            to: 160,
+	            color: '#DDDF0D' // yellow
+	        }, {
+	            from: 160,
+	            to: 200,
+	            color: '#DF5353' // red
+	        }]        
+	    },
+	
+	    series: [{
+	        name: 'Speed',
+	        data: [80],
+	        tooltip: {
+	            valueSuffix: ' km/h'
+	        }
+	    }]
+	
+	}, 
+	// Add some life自定义的图表函数方法
+	function (chart) {
+		if (!chart.renderer.forExport) {
+		    setInterval(function () {
+		        var point = chart.series[0].points[0],
+		            newVal,
+		            inc = Math.round((Math.random() - 0.5) * 20);
+		        
+		        newVal = point.y + inc;
+		        if (newVal < 0 || newVal > 200) {
+		            newVal = point.y - inc;
+		        }
+		        
+		        point.update(newVal);
+		        
+		    }, 3000);
+		}
+	});
+});
+		</script>
+	</head>
+	
+    <body style="background-color:#DCDCDC;">
+	    <div align="center" style="margin-top:5%;"><h3>速度仪表图</h3></div>
+	    <div style="float:center;margin-left:60%;">
+		</div>
+		<div id="chart" style="float:center;margin-right:5%;margin-top:1%">
+		<div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+		</div>
+	</body>
+</html>

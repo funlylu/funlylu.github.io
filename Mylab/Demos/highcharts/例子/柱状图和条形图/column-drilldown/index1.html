@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script><!--jQuery文件-->
+		<script src="../../js/highcharts.js"></script>
+        <script src="../../js/modules/exporting.js"></script>
+		<script src="http://code.highcharts.com/modules/drilldown.js"></script><!--引入drilldown.js库文件-->
+		<script type="text/javascript">
+$(function () {
+
+    // Create the chart
+    $('#container').highcharts({
+	   //图表基本选项配置
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Basic drilldown'
+        },
+        xAxis: {
+            type: 'category'
+        },
+
+        legend: {
+            enabled: false
+        },
+
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        
+		//=================================
+		//本实例重点配置选项
+        series: [{
+            name: 'Things',
+            colorByPoint: true,
+            data: [{
+                name: 'Animals',
+                y: 5,
+                drilldown: 'animals'//通过id将该数据点和详细的drilldown中的钻取数据对象关联
+            }, {
+                name: 'Fruits',
+                y: 2,
+                drilldown: 'fruits'
+            }, {
+                name: 'Cars',
+                y: 4,
+                drilldown: 'cars'
+            }]
+        }],
+        drilldown: {
+            series: [{
+                id: 'animals',
+                data: [
+                    ['Cats', 4],
+                    ['Dogs', 2],
+                    ['Cows', 1],
+                    ['Sheep', 2],
+                    ['Pigs', 1]
+                ]
+            }, {
+                id: 'fruits',
+                data: [
+                    ['Apples', 4],
+                    ['Oranges', 2]
+                ]
+            }, {
+                id: 'cars',
+                data: [
+                    ['Toyota', 4],
+                    ['Opel', 2],
+                    ['Volkswagen', 2]
+                ]
+            }]
+        }
+    });
+});
+
+
+		</script>
+	</head>
+	
+    <body style="background-color:#DCDCDC;">
+	     <div align="center" style="margin-top:5%;"><h3>数据钻取图表实例1</h3></div>
+		<div id="chart" style="float:center;margin-right:5%;margin-top:1%">
+		<div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+		</div>
+	</body>
+</html>

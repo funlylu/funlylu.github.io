@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<style type="text/css">
+	  /*bass css*/
+	 body{
+	 	padding: 30px;
+	 }
+		pre{
+		 width: 50%;
+		 border:1px solid #CCC;
+		 border-radius: 10px;
+		 padding: 20px;
+		 background-color: #eee;
+		 -webkit-box-shadow:  5px 5px 2px #B0E0E6;
+		 -moz-box-shadow: 5px 5px 2px #B0E0E6;
+		 box-shadow: 5px 5px 2px #B0E0E6;
+         word-wrap:break-word; 
+         word-break:break-all;
+		}
+		/*demo css*/
+			.box{
+				border: 1px solid red;
+				height: auto;
+			}
+			.box img{
+				border: 1px solid #000;
+				height: 250px;
+				width: 200px;
+			}
+			/*修复bug*/
+			.boxfix{
+				font-size: 0;/*ie8+,opera，webkit就可以解决了*/
+				/*line-height: 0;/*firefox，需要加这个才能解决img和父级div的空白*/
+				*word-spacing: -1px;/*ie6 ie7除了上面的font-size 还有设置这个属性才能解决水平距离之间还有一个像素的间隙*/
+			}
+		</style>
+		
+		<pre>这个例子我们用img元素来做。可以看到在图片元素和父级元素以及图片元素之间都有空隙</pre>
+		<h6>修复前</h6>
+		<div class="box">
+			<img src="../img/huanghuo.png" alt="荒火教" />
+			<img src="../img/jobs_8.png" alt="荒火教" />
+			<img src="../img/jobs_4.png" alt="荒火教" />
+			<img src="../img/jobs_6.png" alt="荒火教" />	
+		</div>
+		
+		<h6>修复后</h6>
+		
+		<div class="box boxfix">
+			<img src="../img/huanghuo.png" alt="荒火教" />
+			<img src="../img/jobs_8.png" alt="荒火教" />
+			<img src="../img/jobs_4.png" alt="荒火教" />
+			<img src="../img/jobs_6.png" alt="荒火教" />
+		</div>
+		
+		<br />
+		<hr />
+		<pre>其实水平之间的距离是因为img换行导致的空格 所以只要几个img并列写水平间隙其实是没有的，但是一般为了代码的格式的优雅以及可维护性一般都不这么写</pre>
+		 <h6>几个img标签写成一行，水平之间没有间隙</h6>
+		 <div class="box"><img src="../img/huanghuo.png" alt="荒火教" /><img src="../img/jobs_8.png" alt="荒火教" /><img src="../img/jobs_4.png" alt="荒火教" /><img src="../img/jobs_6.png" alt="荒火教" />	
+		</div>
+	</body>
+</html>

@@ -1,0 +1,670 @@
+/* 
+
+ */
+
+html {
+    font: 16px/16px Microsoft YaHei, Arial, \\5B8B\4F53, Arial Narrow;
+    font-size: 312.5%;
+    /* font-size: 62.5%; */
+    /*chrome支持的最小字体是12px;*/
+    /* 1rem=50px;1px=0.02rem;*/
+}
+
+body {
+    /* 页面默认字体设置 */
+    font-size: 12px;
+    font-size: 0.24rem;
+    /* 今天学到一个新知识叫"优雅降级",怎么理解呢，嗯就像上面这个字体大小设置一样，
+    为了兼容不支持rem的浏览器，在用rem单位设置之前用px单位让那些不认识rem的浏览器也可以实现字体大小设置这个功能。 */
+    overflow: hidden;
+}
+
+html,
+body,
+div,
+span {
+    margin: 0;
+    padding: 0;
+}
+
+
+/*清除浮动*/
+
+.clearfix {
+    /*ie7以下版本清除浮动的方法：设置zoom触发layout*/
+    *zoom: 1;
+}
+
+.clearfix:after,
+.clearfix:before {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+
+/* page layout */
+
+html,
+body {
+    height: 100%;
+}
+
+.house-wrapper {
+    height: 100%;
+}
+
+.sky {
+    position: relative;
+    background: #96c4e6;
+    height: 70%;
+    width: 100%;
+}
+
+.cloud-block-l {
+    position: absolute;
+    left: 26%;
+    top: 10%;
+}
+
+.cloud-block-r {
+    position: absolute;
+    right: 4%;
+    top: 10%;
+}
+
+.cloud-block-b {
+    position: absolute;
+    right: 10%;
+    top: 10%;
+}
+
+
+/* .cloud-block-b {
+    float: right;
+}
+ */
+
+.house-panel {
+    position: relative;
+    height: 30%;
+    width: 100%;
+    background: #916D1E;
+}
+
+
+/* sun
+ */
+
+.sun {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #f2753f;
+    border-radius: 50%;
+    z-index: 99;
+    top: 20%;
+    left: 80%;
+    border: 0.1rem double #f2753f;
+    box-shadow: 0 0 1rem #f2753f;
+    /* transform: scale(0.9); */
+}
+
+.triangle {
+    position: absolute;
+    border: .3rem solid transparent;
+    left: 0;
+    top: 0;
+    border-bottom: 0.8rem solid #ffe957;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+    /* box-shadow: 0 0 0.1rem #ffe957; 花瓣效果*/
+}
+
+.triangle-1 {
+    top: -0.82rem;
+    left: 1.54rem;
+    transform: rotate(51deg);
+}
+
+.triangle-2 {
+    top: 0.16rem;
+    left: 1.9rem;
+    transform: rotate(92deg);
+}
+
+.triangle-3 {
+    top: 1.18rem;
+    left: 1.48rem;
+    transform: rotate(136deg);
+}
+
+.triangle-4 {
+    top: 1.6rem;
+    left: 0.5rem;
+    transform: rotate(179deg);
+}
+
+.triangle-5 {
+    top: 1.26rem;
+    left: -0.52rem;
+    transform: rotate(220deg);
+}
+
+.triangle-6 {
+    top: 0.28rem;
+    left: -1.02rem;
+    transform: rotate(266deg);
+}
+
+.triangle-7 {
+    top: -0.8rem;
+    left: -0.68rem;
+    transform: rotate(308deg);
+}
+
+.triangle-8 {
+    top: -1.3rem;
+    left: 0.52rem;
+    transform: rotate(3deg);
+}
+
+
+/* house */
+
+.house {
+    position: absolute;
+    left: 1%;
+    bottom: 69%;
+    width: 7rem;
+    height: 4rem;
+    border: 2px solid #ccc;
+    background: #fff;
+}
+
+.house:before,
+.house:after {
+    position: absolute;
+    display: block;
+    content: "";
+}
+
+.house:before {
+    left: 25%;
+    height: 100%;
+    border-left: 2px solid #ccc;
+}
+
+
+/* .house:after {} */
+
+.roof {
+    position: absolute;
+    top: -3rem;
+    left: -0.5rem;
+    width: 5rem;
+    border: 1.5rem solid transparent;
+    border-bottom: 1.5rem solid #f2753f;
+}
+
+.roof:before {
+    display: block;
+    content: "";
+    position: absolute;
+    border: 1.4rem solid transparent;
+    border-bottom: 1.4rem solid #EDF7ED;
+    left: -1.48rem;
+    top: -1.3rem;
+}
+
+.roof:after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 0.6rem;
+    height: 0.4rem;
+    background: #f2753f;
+    border-top: 10px double #CF7447;
+    top: -23px;
+    left: 72%;
+}
+
+
+/* cloud */
+
+.roof-cloud {
+    position: absolute;
+    right: 20%;
+    top: -63%;
+    display: block;
+    width: 41px;
+    height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0.2rem #fff;
+}
+
+.roof-cloud:before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 11px;
+    border-radius: 50%;
+    border: 10px double #fff;
+    right: -77%;
+    top: -114%;
+    box-shadow: 0 0 0.2rem #fff;
+}
+
+.sky-cloud {
+    position: relative;
+    width: 1.5rem;
+    height: 0.5rem;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0.6rem #fff;
+}
+
+.sky-cloud:before,
+.sky-cloud:after {
+    position: absolute;
+    display: block;
+    content: "";
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0.2rem #fff;
+}
+
+.sky-cloud:before {
+    width: 75px;
+    height: 33px;
+    left: 25px;
+    top: -19px;
+}
+
+.sky-cloud:after {
+    width: 75px;
+    height: 39px;
+    left: 49px;
+    top: -7px;
+}
+
+
+/* cloud-size */
+
+.cloud-lg {
+    transform: scale(2);
+}
+
+.cloud-md {
+    transform: scale(1);
+}
+
+.cloud-sm {
+    transform: scale(0.5);
+}
+
+
+/* door */
+
+.door {
+    position: absolute;
+    bottom: 0;
+    left: 62.5%;
+    width: 1.5rem;
+    margin-left: -0.5rem;
+    height: 2rem;
+    border: 2px solid #ccc;
+    background-color: rgb(142, 105, 43);
+}
+
+.door:before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    background-color: #B0A8A8;
+    top: 50%;
+    left: 5px;
+}
+
+
+/* 花草 */
+
+
+/* tree */
+
+.tree {
+    position: absolute;
+    left: 27%;
+    bottom: 70%;
+}
+
+.tree .leafs {
+    position: absolute;
+    width: 4rem;
+    height: 4.5rem;
+    border-radius: 50%;
+    background: rgba(0, 255, 0, 1);
+    left: -1px;
+    bottom: 115px;
+}
+
+.tree .leafs:before {
+    position: absolute;
+    display: block;
+    content: "";
+    height: 4.5rem;
+    background: rgba(0, 255, 0, 1);
+    left: 44%;
+    border-radius: 50%;
+    width: 3rem;
+}
+
+.tree:after {
+    position: absolute;
+    display: block;
+    content: "";
+    height: 2.5rem;
+    border-right: 25px solid #8E692B;
+    border-left: 40px solid #8E692B;
+    border-top: 100px solid transparent;
+    left: 84px;
+    bottom: 0;
+}
+
+
+/* grass */
+
+.grass-block {
+    position: absolute;
+    z-index: 11;
+    left: 34%;
+}
+
+.grass {
+    position: relative;
+    width: 1.5rem;
+    height: 0.5rem;
+    background-color: #15BD15;
+    border-radius: 50%;
+    transform: scale(2);
+}
+
+.grass:before,
+.grass:after {
+    position: absolute;
+    display: block;
+    content: "";
+    background-color: #12BE12;
+    border-radius: 50%;
+}
+
+.grass:before {
+    width: 75px;
+    height: 33px;
+    left: 25px;
+    top: -19px;
+}
+
+.grass:after {
+    width: 75px;
+    height: 39px;
+    left: 49px;
+    top: -7px;
+}
+
+.leaf {
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 255, 0, .5);
+    box-shadow: 2px 1px 1px rgba(0, 0, 0, .1);
+    border-radius: 3px 200px;
+    /*两个是参数是代表对角线, X 这个字母的样子*/
+}
+
+
+/* flower */
+
+.flower-block-1 {
+    position: absolute;
+    right: 19%;
+    bottom: 37%;
+}
+
+.flower-block-2 {
+    position: absolute;
+    right: 13%;
+    bottom: 64%;
+}
+
+.flower-block-3 {
+    position: absolute;
+    right: 34%;
+    bottom: 37%;
+}
+
+.sun-flower {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background-color: #F87575;
+    border-radius: 50%;
+    border: 0.2rem solid #F8C475;
+    box-shadow: 0 0 0.1rem #f7bc62, 0 0 0.1rem #f98888 inset;
+    top: -70px;
+}
+
+.flower-leaf {
+    background: #92C84B;
+    width: 0.2rem;
+    z-index: 5;
+    height: 1.5rem;
+    display: block;
+    position: absolute;
+    left: 20px;
+    bottom: -85px;
+}
+
+.flower-leaf:before,
+.flower-leaf:after {
+    display: block;
+    content: "";
+    background: #a8cb7a;
+    position: absolute;
+}
+
+.flower-leaf:before {
+    width: 0.5rem;
+    height: 0.4rem;
+    border-radius: 0rem 0.4rem 0rem 0.4rem;
+    left: -0.4rem;
+    top: 0.1rem;
+}
+
+.flower-leaf:after {
+    width: 0.5rem;
+    height: 0.6rem;
+    border-radius: 0.3rem 0rem 0.5rem 0rem;
+    left: .2rem;
+    top: 0.1rem;
+}
+
+.sea-flower {
+    position: relative;
+}
+
+.sea-flower .sun {
+    transform: scale(.3);
+    position: absolute;
+    top: -0.84rem;
+    left: -0.32rem;
+}
+
+
+/* box-shadow: 0 0 0.1rem #ffe957; 花瓣效果*/
+
+.sea-flower .sun .triangle {
+    box-shadow: 0 0 0.5rem #EFFF06;
+}
+
+.sea-flower .flower-leaf {
+    transform: scale(.7);
+}
+
+
+/* round-tree */
+
+.tree-block {
+    position: absolute;
+    left: 54%;
+    z-index: 10;
+}
+
+.round-tree {
+    width: 2rem;
+    background: rgb(24, 190, 24);
+    height: 1rem;
+    border: 0.1rem double rgb(18, 190, 18);
+    border-radius: 1rem 1rem 0rem 0rem;
+}
+
+.round-tree:before {
+    position: absolute;
+    display: block;
+    content: "";
+    left: -38%;
+    width: 2rem;
+    background: rgb(24, 190, 24);
+    height: 1rem;
+    border: 0.1rem double rgb(18, 190, 18);
+    border-radius: 1rem 1rem 0rem 0rem;
+    top: -8%;
+}
+
+.flower-block-4 {
+    position: absolute;
+    left: 74%;
+    z-index: 10;
+    top: -13%;
+}
+
+.flower-rainbow {
+    height: 0.5rem;
+    width: 0.5rem;
+    background: rgb(229, 244, 17);
+    box-shadow: 0px 0px 0px 5px rgb(156, 8, 229), 0px 0px 0px 10px rgb(12, 38, 216), 0px 0px 0px 15px rgb(11, 219, 245), 0px 0px 0px 20px rgb(26, 250, 89), 0px 0px 0px 25px rgb(241, 247, 14), 0px 0px 0px 30px rgb(236, 152, 23), 0px 0px 0px 35px rgb(250, 47, 11);
+    border-radius: 50%;
+}
+
+.flower-rainbow .flower-leaf {
+    bottom: -2.2rem;
+    left: 0.2rem;
+}
+
+
+/*  */
+
+.flower-block-5 {
+    position: absolute;
+    left: 90%;
+    top: -50%;
+}
+
+.flower-red {
+    position: absolute;
+    height: 0.9rem;
+    width: 1rem;
+    background: transparent;
+    border: 0.4rem dotted red;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.flower-red:after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 1rem;
+    height: 0.9rem;
+    background: rgb(229, 244, 17);
+    border-radius: 50%;
+    z-index: 9;
+}
+
+
+/* flower-block-6*/
+
+.flower-block-6 {
+    position: absolute;
+    left: 59%;
+    z-index: 9;
+    top: 13%;
+}
+
+.flower-frangipane .flower {
+    position: absolute;
+    top: -3.5rem;
+    left: 0.5rem;
+    z-index: 10;
+}
+
+.flower-frangipane .triangle-leaf {
+    position: absolute;
+    top: -3rem;
+    left: -0.1rem;
+    z-index: 9;
+}
+
+.triangle-leaf:before {
+    position: absolute;
+    content: "";
+    display: block;
+    height: 1rem;
+    border-right: 0.4rem solid #48E848;
+    border-left: 0.5rem solid #40E440;
+    border-top: 2rem solid transparent;
+    z-index: 9;
+}
+
+.triangle-leaf:after {
+    position: absolute;
+    display: block;
+    content: "";
+    height: 2rem;
+    width: 0.1rem;
+    background: rgb(88, 224, 88);
+    left: 0.6rem;
+    top: 0.1rem;
+    z-index: 8;
+}
+
+.petal {
+    position: absolute;
+    display: block;
+    border-radius: 50% 0% 50% 0;
+    border-right: 0.5rem solid #fff;
+    border-bottom: 0.5rem solid yellow;
+}
+
+.petal-1 {
+    transform: rotate(90deg);
+    top: 0.5rem;
+}
+
+.petal-2 {
+    transform: rotate(180deg);
+    top: 0.5rem;
+    left: -0.5rem;
+}
+
+.petal-3 {
+    transform: rotate(270deg);
+    left: -0.5rem;
+}

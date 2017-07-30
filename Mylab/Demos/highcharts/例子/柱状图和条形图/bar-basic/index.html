@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script><!--jQuery文件-->
+		<script src="../../js/highcharts.js"></script>
+        <script src="../../js/modules/exporting.js"></script>
+		<script type="text/javascript">
+$(function () {
+         
+		 //图表选项基本配置
+		 options={
+		   
+		    //图表类型设置
+            chart: {
+                type: 'bar',
+				//inverted:true
+            },
+			//图表标题
+            title: {
+                text: 'Historic World Population by Region'
+            },
+            subtitle: {
+                text: '条形图表'
+            },
+			
+			//坐标轴设定
+            xAxis: {
+                categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+				//startOnTick:false,
+                title: {
+                    text: 'Population (millions)',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+			
+			//数据提示框
+            tooltip: {
+                valueSuffix: ' millions'
+            },
+			
+			//数据点相关选项配置
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+			
+			//图列选项配置
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor || '#FFFFFF'),
+                shadow: true
+            },
+			
+			//版权
+            credits: {
+                enabled: false
+            },
+			
+			//数据序列
+            series: [{
+                name: 'Year 1800',
+                data: [107, 31, 635, 203, 2]
+            }, {
+                name: 'Year 1900',
+                data: [133, 156, 947, 408, 6]
+            }, {
+                name: 'Year 2008',
+                data: [973, 914, 4054, 732, 34]
+            }]
+        };
+
+        chart= new $('#container').highcharts(options);//创建初始化图表是bar类型的	
+		
+    });
+    
+	function draw_column(chart)
+	{
+	   if(options.chart.type=='bar')
+	    {options.chart.type="column"; options.subtitle.text='柱状图';}
+		else
+		 {options.chart.type="bar";options.subtitle.text='条形图';}
+		 
+		$('#container').highcharts().destroy();
+		chart= new $('#container').highcharts(options);//创建初始化图表是column类型的
+	}
+
+		</script>
+	</head>
+	
+    <body style="background-color:#DCDCDC;">
+	     <div align="center" style="margin-top:5%;"><h3>基础条形图和柱状图样例</h3></div>
+	    <div style="float:center;margin-left:60%;">
+		<button id="column" onclick="draw_column()">柱状图</button>
+		<button id="bar" onclick="draw_column()">条形图</button>
+		</div>
+		<div id="chart" style="float:center;margin-right:5%;margin-top:1%">
+		<div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+		</div>
+	</body>
+</html>

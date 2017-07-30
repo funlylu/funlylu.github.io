@@ -1,0 +1,189 @@
+/* 页面基本样式设置 */
+
+html,
+body,
+div,
+span,
+time,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font: 16px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+    font-size: 625%;
+}
+body {
+    font-size: 0.16rem;
+    line-height: 1.6em;
+    color: #333;
+    background-color: #fff;
+}
+li {
+    list-style: none;
+}
+
+/* ***************
+* 工具样式
+********* */
+
+clearfix {
+    z-index: *zoom: 1;
+    /* ie7 以下版本的浮动清除 */
+}
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: " ";
+}
+.clearfix:after {
+    clear: both;
+}
+
+/* 内容样式 */
+
+
+/* header */
+
+.nav {
+    font-size: 0.3rem;
+    color: #9cb8c7;
+    text-align: center;
+    padding: 1.4em 0;
+}
+@media only screen and (min-width:55em) {
+    /*这里条件如果写相对单位的话是相对与浏览器的大小*/
+    .nav {
+        width: 90%;
+        margin: 0 auto;
+        font-size: 0.4rem;
+        padding: 2em 0;
+        text-align: left;
+    }
+}
+
+/* main */
+
+.main {
+    width: 80%;
+    margin: 0.2rem 5% 0.2rem 15%;
+}
+@media only screen and (max-width:40em) {
+    .main {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+/* timeline */
+
+.timeline {
+    border-left: 0.1rem solid #b198ac;
+    padding-left: 0.3rem;
+}
+.timeline li {
+    position: relative;
+    font-size: 0.16rem;
+}
+.timeline li:nth-child(2n-1) .timelabel {
+    background-color: rgb(177, 152, 172);
+}
+.timeline li:nth-child(2n) .timelabel {
+    background-color: #93b998;
+}
+.timeline li+li {
+    margin-top: 0.2rem;
+}
+.time {
+    position: absolute;
+    left: -1.35rem;
+}
+.time span {
+    display: block;
+    text-align: right;
+}
+.time span:first-child {
+    color: #b9cad4;
+}
+.time span:last-child {
+    font-weight: bold;
+    font-size: 1.8em;
+    padding-top: 0.1em;
+}
+.timeline li:nth-child(2n-1) .time span:last-child {
+    color: #b198ac;
+}
+.timeline li:nth-child(2n) .time span:last-child {
+    color: #93b998;
+}
+.timelabel {
+    position: relative;
+    color: #fff;
+    border-radius: 0.05rem;
+    padding: 0.3rem;
+}
+.timelabel h3 {
+    font-size: 1.3em;
+    border-bottom: 0.01rem solid #fff;
+    padding-bottom: 0.1rem;
+}
+.timelabel:before {
+    position: absolute;
+    top: 0.08rem;
+    display: block;
+    content: " ";
+    border: 0.1rem solid transparent;
+    left: -0.2rem;
+}
+.timeline li:nth-child(2n-1) .timelabel:before {
+    border-right: 0.1rem solid #b198ac;
+}
+.timeline li:nth-child(2n) .timelabel:before {
+    border-right: 0.1rem solid #93b998;
+}
+@media only screen and (min-width: 55em) {
+    .time span:last-child {
+        font-size: 3em;
+        padding-top: 0.2em;
+    }
+    .time {
+        left: -1.7rem;
+    }
+}
+@media only screen and (max-width:40em) {
+    .timeline {
+        border-left: none;
+        padding-left: 0;
+    }
+    .time {
+        float: left;
+        position: static;
+        margin-bottom: 0.15rem;
+    }
+    .timelabel {
+        float: left;
+    }
+    .time span {
+        text-align: left;
+    }
+    .time span:first-child {
+        font-weight: bold;
+    }
+    .timelabel:before {
+        position: absolute;
+        top: -0.2rem;
+        left: 0.2rem;
+        display: block;
+        content: " ";
+        border: 0.1rem solid transparent;
+    }
+    .timeline li:nth-child(2n-1) .timelabel:before {
+        border-right: 0.1rem solid transparent;
+        border-bottom: 0.1rem solid #b198ac;
+    }
+    .timeline li:nth-child(2n) .timelabel:before {
+        border-right: 0.1rem solid transparent;
+        border-bottom: 0.1rem solid #93b998;
+    }
+}

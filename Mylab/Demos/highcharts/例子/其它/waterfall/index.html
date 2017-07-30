@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script><!--jQuery文件-->
+		<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'waterfall'
+        },
+
+        title: {
+            text: 'Highcharts Waterfall'
+        },
+
+        xAxis: {
+            type: 'category'
+        },
+
+        yAxis: {
+            title: {
+                text: 'USD'
+            },
+			ploatLines:{
+			 color: "teal",
+			 value: -100
+			}
+        },
+
+        legend: {
+            enabled: false
+        },
+
+        tooltip: {
+            pointFormat: '<b>${point.y:,.2f}</b> USD'
+        },
+
+        series: [{
+		
+		   // threshold:100,//设定的一个初始值,初始状态
+		    dashStyle:'Dash',//链接两个瀑布图之间的线条的样式
+            upColor: Highcharts.getOptions().colors[0],//设定正值显示的颜色
+            color: Highcharts.getOptions().colors[3],
+            data: [
+			{
+				name:'Start',
+				y:120  
+		    }, 
+			{
+                name: 'Product Revenue',
+                y: 569
+				
+            }, {
+                name: 'Service Revenue',
+                y: 231
+            }, {
+                name: 'Positive Balance',
+                isIntermediateSum: true,//计算中间和
+                color: Highcharts.getOptions().colors[1]
+            }, {
+                name: 'Fixed Costs',
+                y: -342,
+				
+            }, {
+                name: 'Variable Costs',
+                y: -233,
+				
+            }, {
+                name: 'Balance',
+                isSum: true,
+                color: Highcharts.getOptions().colors[1]
+            }],
+            dataLabels: {
+                enabled: true,
+                formatter: function () {
+                    return Highcharts.numberFormat(this.y / 1, 0, ',') + 'k';
+                },
+                style: {
+                    color: '#FFFFFF',
+                    fontWeight: 'bold',
+                    textShadow: '0px 0px 3px black'
+                }
+            },
+            pointPadding: 0.1,
+			
+        }]
+    });
+});
+
+		</script>
+	</head>
+	<body>
+<script src="../../js/highcharts.js"></script>
+<script src="../../js/highcharts-more.js"></script>
+<script src="../../js/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>

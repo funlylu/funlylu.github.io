@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HighCharts</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    body {
+        margin-top: 20px;
+    	background-color: #bfdbb8;
+
+    }
+    .panel-default>.panel-heading{
+    	position: relative;
+        /* background-color: #dbcbb8; */
+        background-color: #bfbfbf;
+    }
+    .panel-title{
+    	height: 10px;
+    	text-align: center;
+    }
+    .panel-title span{
+    	display: inline-block;
+    	height: 100%;
+    	width: 100%;
+    	color: #fff;
+    	font-weight: bold;
+    }
+    .panel{
+    	margin-bottom: 0;
+    }
+    .page-title{
+    	color: #fff;
+    	font-size: 30px;
+    	width: 100%;
+    	text-align: center;
+    }
+    .panel-body a{
+    	color: #d9b3e6;
+    	font-size: 16px;
+    	font-weight: bold;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                 <h4 class="page-title">Highcharts 图表实例</h4>
+                <!-- panel start -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+							<span data-toggle="collapse" 
+							   data-target="#collapse-0">
+								Line charts线性图表实例
+							</span>
+						</h4>
+                    </div>
+                    <div id="collapse-0" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="例子/曲线图/spline-symbols/index.htm">曲线图数据点用图片做显示的</a></li>
+                                <li class="list-group-item"><a href="例子/曲线图/spline-irregular-time/index.htm">时间轴图表</a></li>
+                                <li class="list-group-item"><a href="例子/曲线图/line-log-axis/index.htm">以对数坐标轴图表</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel end -->
+                <!-- panel start -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+							<span data-toggle="collapse" 
+							   data-target="#collapse-1">
+								Area charts区域图表实例
+							</span>
+						</h4>
+                    </div>
+                    <div id="collapse-1" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="例子/区域图/area-basic/index.htm">Basic area基本区域图</a></li>
+                                <li class="list-group-item"><a href="例子/区域图/area-stacked/index.htm">Stacked area堆叠显示的区域图</a></li>
+                                <li class="list-group-item"><a href="例子/区域图/area-stacked-percent/index.htm">Percentage area百分比堆叠显示</a></li>
+                                <li class="list-group-item"><a href="例子/区域图/areaspline/index.htm">Areaspline类图表</a></li>
+                                <li class="list-group-item"><a href="例子/区域图/arearange/index.htm">Areaange类图表</a></li>
+                                <li class="list-group-item"><a href="例子/区域图/arearange-line/index.htm">Area range and line混合图表</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel end -->
+                <!-- panel start -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+							<span data-toggle="collapse" 
+							   data-target="#collapse-2">
+								柱形图与条形图
+							</span>
+						</h4>
+                    </div>
+                    <div id="collapse-2" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="例子/柱状图和条形图/bar-basic/index.htm">基本条形图与柱状图</a></li>
+                                <li class="list-group-item"><a href="例子/柱状图和条形图/column-stacked-and-grouped/index.htm">分组堆叠的柱状图</a></li>
+                                <li class="list-group-item"><a href="例子/柱状图和条形图/column-drilldown/index1.html">柱状图-数据钻取实例1</a></li>
+                                <li class="list-group-item"><a href="例子/柱状图和条形图/column-drilldown/index.htm">柱状图-数据钻取实例2</a></li>
+                                <li class="list-group-item"><a href="例子/柱状图和条形图/columnrange/index.htm">Columnrange类图表</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel end -->
+                <!-- panel start -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+							<span data-toggle="collapse" 
+							   data-target="#collapse-3">
+								饼图
+							</span>
+						</h4>
+                    </div>
+                    <div id="collapse-3" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="例子/饼图/pie-basic/index.htm">Pie chart</a></li>
+                                <li class="list-group-item"><a href="例子/饼图/pie-donut/index.htm">Donut chart</a></li>
+                                <li class="list-group-item"><a href="例子/饼图/pie-semi-circle/index.htm">Semi circle donut</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel end -->
+                <!-- panel start -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+							<span data-toggle="collapse" 
+							   data-target="#collapse-4">
+								散点图与气泡图
+							</span>
+						</h4>
+                    </div>
+                    <div id="collapse-4" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <li class="list-group-item"><a href="例子/散点图/scatter/index.htm">散点图</a></li>
+                            <li class="list-group-item"><a href="例子/散点图/bubble/index.htm">气泡图</a></li>
+                            <li class="list-group-item"><a href="例子/散点图/bubble-3d/index.htm">3D 气泡图</a></li>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel end -->
+                <!-- panel start -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+							<span data-toggle="collapse" 
+							   data-target="#collapse-5">
+								仪表图
+							</span>
+						</h4>
+                    </div>
+                    <div id="collapse-5" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="例子/仪表图/gauge-speedometer/index.htm">Angular gauge</a></li>
+                                <li class="list-group-item"><a href="例子/仪表图/gauge-solid/index.htm">Solid gauge</a></li>
+                                <li class="list-group-item"><a href="例子/仪表图/gauge-clock/index.htm">Clock</a></li>
+                                <li class="list-group-item"><a href="例子/仪表图/gauge-dual/index.htm">Gauge with dual axes</a></li>
+                                <li class="list-group-item"><a href="例子/仪表图/gauge-vu-meter/index.htm">VU meter</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel end -->
+                <!-- panel start -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+							<span data-toggle="collapse" 
+							   data-target="#collapse-6">
+								热图
+							</span>
+						</h4>
+                    </div>
+                    <div id="collapse-6" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="例子/热图/heatmap/index.htm">实例1</a></li>
+                                <li class="list-group-item"><a href="例子/热图/heatmap-canvas/index.htm">实例2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel end -->
+                <!-- panel start -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+							<span data-toggle="collapse" 
+							   data-target="#collapse-7">
+								其它图表
+							</span>
+						</h4>
+                    </div>
+                    <div id="collapse-7" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="例子/其它/polar/index.htm">Polar chart</a></li>
+                                <li class="list-group-item"><a href="例子/其它/box-plot/index.htm">Box plot</a></li>
+                                <li class="list-group-item"><a href="例子/其它/error-bar/index.htm">Error bar</a></li>
+                                <li class="list-group-item"><a href="例子/其它/waterfall/index.htm">Waterfall</a></li>
+                                <li class="list-group-item"><a href="例子/其它/funnel/index.htm">Funnel chart</a></li>
+                                <li class="list-group-item"><a href="例子/其它/pyramid/index.htm">Pyramid chart</a></li>
+                                <li class="list-group-item"><a href="例子/其它/renderer/index.htm">General drawing</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel end -->
+                <!-- panel start -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+							<span data-toggle="collapse" 
+							   data-target="#collapse-8">
+								3D图表
+							</span>
+						</h4>
+                    </div>
+                    <div id="collapse-8" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="例子/3d图/3d-column-interactive/index.htm">3D column</a></li>
+                                <li class="list-group-item"><a href="例子/3d图/3d-column-null-values/index.htm">3D column with null and 0 values</a></li>
+                                <li class="list-group-item"><a href="例子/3d图/3d-column-stacking-grouping/index.htm">3D column with stacking and grouping</a></li>
+                                <li class="list-group-item"><a href="例子/3d图/3d-pie/index.htm">3D pie</a></li>
+                                <li class="list-group-item"><a href="例子/3d图/3d-pie-donut/index.htm">3D donut</a></li>
+                                <li class="list-group-item"><a href="例子/3d图/3d-scatter-draggable/index.htm">3D scatter chart</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel end -->
+                <!-- panel start -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+							<span data-toggle="collapse" 
+							   data-target="#collapse-9">
+								混合图
+							</span>
+						</h4>
+                    </div>
+                    <div id="collapse-9" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="例子/混合图/combo/index.htm">Column, line and pie</a></li>
+                                <li class="list-group-item"><a href="例子/混合图/combo-multi-axes/index.htm">Multiple axes</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel end -->
+                <!-- panel start -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+							<span data-toggle="collapse" 
+							   data-target="#collapse-10">
+								动态图
+							</span>
+						</h4>
+                    </div>
+                    <div id="collapse-10" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="例子/动态图/dynamic-update/index.htm">Spline updating each second</a></li>
+                                <li class="list-group-item"><a href="例子/动态图/dynamic-click-to-add/index.htm">Click to add a point</a></li>
+                                <li class="list-group-item"><a href="例子/动态图/dynamic-master-detail/index.htm">Master-detail chart</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel end -->
+                 <!-- panel start -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <span data-toggle="collapse" 
+                               data-target="#collapse-11">
+                                文档
+                            </span>
+                        </h4>
+                    </div>
+                    <div id="collapse-11" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href="doc/Highchart 插件的用法.ppt">Highchart 插件的用法.ppt</a></li>
+                                <li class="list-group-item"><a href="doc/Highcharts.pdf">Highcharts.pdf</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- panel end -->
+            </div>
+        </div>
+    </div>
+    <script>
+    var page = function() {
+        // body...
+    };
+    jQuery(document).ready(function($) {
+
+    });
+    </script>
+</body>
+
+</html>

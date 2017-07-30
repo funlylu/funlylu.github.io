@@ -1,0 +1,484 @@
+   @charset "utf-8";
+   .clearfix:before,
+   .clearfix:after {
+       display: table;
+       content: " ";
+   }
+   .clearfix:after {
+       clear: both;
+   }
+   .pull-right {
+       float: right !important;
+   }
+   .pull-left {
+       float: left !important;
+   }
+   .text-center {
+       text-align: center !important;
+   }
+   /*******
+*页面样式
+********/
+
+   html,
+   body,
+   div,
+   span,
+   header,
+   ul,
+   li,
+   footer,
+   i,
+   em,
+   h3,
+   h4,
+   h2,
+   a {
+       margin: 0;
+       padding: 0;
+   }
+   html {
+       font: 16px/1.5 "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+       font-size: 625%;
+   }
+   html,
+   body {
+       height: 100%;
+       width: 100%;
+       background: url('../img/world.jpg') center no-repeat;
+       background-size: cover;
+   }
+   /* 选中元素的背景色设置 */
+
+    ::selection {
+       text-shadow: none;
+       background-color: #2196F3;
+   }
+   ul {
+       margin: 0;
+       padding: 0;
+   }
+   li {
+       list-style: none;
+   }
+   img,
+   object {
+       width: auto;
+       max-width: 100%;
+   }
+   body {
+       font-size: 0.1rem;
+       line-height: 1.5em;
+       color: #555;
+       overflow: hidden;
+   }
+   a {
+       text-decoration: none;
+       color: #555;
+   }
+   /* banner */
+
+   .banner {
+       height: 100%;
+       width: 100%;
+       font-size: 0.1rem;
+       background-color: #bdd0c9;
+       padding-top: 10%;
+   }
+   .girl {
+       width: 16%;
+       box-sizing: border-box;
+       margin: 0 auto;
+       background-color: #737ea2;
+       border-radius: 50%;
+       text-align: center;
+       animation: down-in 2s, pulse 2s 3s infinite alternate;
+       padding-top: 1.5em;
+   }
+   .girl:hover {
+       box-shadow: 0 2px 2px #000;
+   }
+   .girl img {
+       width: 80%;
+       border-radius: 50%;
+   }
+   .girl:before {
+       display: block;
+       content: "关于我";
+       color: #fff;
+       font-size: 1.6em;
+   }
+   .footer-img {
+       position: absolute;
+       width: 100%;
+       height: 40%;
+       bottom: 0;
+       animation: grow 3s;
+       text-align: center;
+       width: 100%;
+   }
+   .footer-img img {
+       width: 50%;
+   }
+   @media only screen and (max-width: 30em) {
+       .girl {
+           width: 40%;
+       }
+       .footer-img img {
+           width: 100%;
+       }
+       .banner {
+           padding-top: 30%;
+       }
+   }
+   @keyframes grow {
+       from {
+           bottom: -100%;
+       }
+       to {
+           bottom: 0;
+       }
+   }
+   @keyframes down-in {
+       from {
+           transform: translateY(-100%);
+       }
+       to {
+           transform: translateY(0);
+       }
+   }
+   /* main page */
+
+   .main {
+       position: absolute;
+       width: 100%;
+       height: 100%;
+       font-size: 0.1rem;
+   }
+   /* trans-page */
+
+   .trans-page {
+       width: 80%;
+       height: 100%;
+       margin: 0 auto;
+   }
+   .trans-page .nav {
+       width: 100%;
+       text-align: center;
+       background-color: yellow;
+       font-size: 1.6em;
+   }
+   .trans-page .nav li {
+       display: inline-block;
+       position: relative;
+       height: 5em;
+       line-height: 5em;
+       text-align: center;
+       padding: 0 1em;
+       border-radius: 0 0 0.5em 0.5em;
+       cursor: pointer;
+   }
+   .trans-page .nav li i {
+       display: inline-block;
+       position: absolute;
+       font-style: normal;
+       left: 0;
+       height: 0;
+       font-size: 0;
+       color: #fff;
+       width: 100%;
+       border-radius: 0 0 0.4em 0.4em;
+       background-color: red;
+       animation: 2s;
+   }
+   .trans-page .nav li.active i {
+       height: 100%;
+       font-size: 1.2em;
+   }
+   .trans-page .nav li+li {
+       margin-left: 1em;
+   }
+   @media only screen and (max-width: 30em) {
+       .trans-page {
+           width: 98%;
+       }
+       .trans-page .nav {
+           font-size: 1.2em;
+       }
+   }
+   .trans-page .page {
+       text-align: center;
+       width: 100%;
+       display: none;
+       min-height: 5rem;
+       background-color: rgba(198, 241, 131, 0.89);
+   }
+   .trans-page .page.active {
+       display: block;
+   }
+   /* persnal add */
+
+   .main .footer {
+       position: relative;
+   }
+   .main .footer .back {
+       position: absolute;
+       left: 0;
+       bottom: 0;
+       width: 100px;
+       animation: pulse 2s infinite alternate;
+   }
+   .footer .back img {
+       transition: 0.3s;
+   }
+   .footer .back img:hover {
+       -webkit-transform: scale3d(1.2, 1.2, 1.2);
+       -ms-transform: scale3d(1.2, 1.2, 1.2);
+       -o-transform: scale3d(1.2, 1.2, 1.2);
+       transform: scale3d(1.2, 1.2, 1.2);
+   }
+   /* page-about  */
+
+   .page-about {
+       font-size: 1.6em;
+       line-height: 1.8em;
+   }
+   .page-about .me-img {
+       width: 1rem;
+       text-align: center;
+       padding-top: 0.5rem;
+       margin: 0 auto;
+   }
+   .page-about .about-info {
+       width: 50%;
+       margin: 0 auto;
+       padding-top: 1.5em;
+       text-align: left;
+       text-indent: 2em;
+   }
+   @media only screen and (max-width: 30em) {
+       .page-about .about-info {
+           text-indent: 0;
+       }
+   }
+   /* page-edu */
+
+   .page-edu,
+   .page-job {
+       font-size: 1.6em;
+       line-height: 1.8em;
+   }
+   .page-edu .edu-content,
+   .page-job .job-content {
+       margin: auto;
+       width: 50%;
+       padding-top: 2em;
+   }
+   /* page-skill */
+
+   .page-skill {
+       font-size: 0.1rem;
+       padding-top: 4em;
+   }
+   .page-skill .skill-content {
+       max-width: 400px;
+       margin: 0 auto;
+       text-align: center;
+       font-size: 0;
+   }
+   .page-skill .skill {
+       box-sizing: border-box;
+       width: 100px;
+       height: 100px;
+       margin: 0 20px 20px auto;
+       display: inline-block;
+   }
+   .page-skill .chart {
+       position: relative;
+       height: 100%;
+       text-align: center;
+   }
+   .page-skill .chart canvas {
+       position: absolute;
+       left: 0;
+       top: 0;
+       display: inline-block;
+   }
+   .page-skill .chart span {
+       color: #fff;
+       font-size: 0.12rem;
+       position: absolute;
+       width: 100%;
+       left: 0;
+       top: 49%;
+   }
+   @media only screen and (max-width: 30em) {
+       .page-skill .skill {
+           width: 50%;
+       }
+       .page-skill .chart canvas {
+           margin-left: 25px;
+       }
+       .page-skill .chart span {
+           font-size: 0.1rem;
+       }
+   }
+   /* timeline */
+
+   .timeline {
+       border-left: 0.1rem solid #fe0000;
+       padding-left: 0.3rem;
+   }
+   .timeline li {
+       position: relative;
+       font-size: 0.16rem;
+   }
+   .timeline li:nth-child(2n-1) .timelabel {
+       background-color: #ff0000;
+   }
+   .timeline li:nth-child(2n) .timelabel {
+       background-color: #3594CB;
+   }
+   .timeline li+li {
+       margin-top: 0.2rem;
+   }
+   .time {
+       position: absolute;
+       left: -1.35rem;
+   }
+   .time span {
+       display: block;
+       text-align: right;
+   }
+   .time span:first-child {
+       color: #fff;
+       ;
+       ;
+   }
+   .time span:last-child {
+       font-weight: bold;
+       font-size: 1.8em;
+       padding-top: 0.1em;
+   }
+   .timeline li:nth-child(2n-1) .time span:last-child {
+       color: #6CBFEE;
+   }
+   .timeline li:nth-child(2n) .time span:last-child {
+       color: #3594CB;
+   }
+   .timelabel {
+       position: relative;
+       color: #fff;
+       border-radius: 0.05rem;
+       padding: 0.3rem;
+       text-align: left;
+   }
+   .timelabel h3 {
+       font-size: 1.3em;
+       border-bottom: 0.01rem solid #fff;
+       padding-bottom: 0.1rem;
+   }
+   .timelabel:before {
+       position: absolute;
+       top: 0.08rem;
+       display: block;
+       content: " ";
+       border: 0.1rem solid transparent;
+       left: -0.2rem;
+   }
+   .timeline li:nth-child(2n-1) .timelabel:before {
+       border-right: 0.1rem solid #fe0000;
+   }
+   .timeline li:nth-child(2n) .timelabel:before {
+       border-right: 0.1rem solid #3594CB;
+   }
+   @media only screen and (min-width: 55em) {
+       .time span:last-child {
+           font-size: 3em;
+           padding-top: 0.2em;
+       }
+       .time {
+           left: -1.7rem;
+       }
+   }
+   @media only screen and (max-width:40em) {
+       .timeline {
+           border-left: none;
+           padding-left: 0;
+       }
+       .time {
+           float: left;
+           position: static;
+           margin-bottom: 0.15rem;
+       }
+       .timelabel {
+           float: left;
+       }
+       .time span {
+           text-align: left;
+       }
+       .time span:first-child {
+           font-weight: bold;
+       }
+       .timelabel:before {
+           position: absolute;
+           top: -0.2rem;
+           left: 0.2rem;
+           display: block;
+           content: " ";
+           border: 0.1rem solid transparent;
+       }
+       .timeline li:nth-child(2n-1) .timelabel:before {
+           border-right: 0.1rem solid transparent;
+           border-bottom: 0.1rem solid #fe0000;
+       }
+       .timeline li:nth-child(2n) .timelabel:before {
+           border-right: 0.1rem solid transparent;
+           border-bottom: 0.1rem solid #3594CB;
+       }
+   }
+   /* animated*/
+
+   .animated {
+       animation-duration: 1s;
+       animation-fill-mode: both;
+   }
+   @keyframes fadeOutDown {
+       from {
+           opacity: 1;
+       }
+       to {
+           opacity: 0;
+           transform: translateY(10%);
+       }
+   }
+   .fadeOutDown {
+       animation-name: fadeOutDown;
+   }
+   @keyframes fadeInUp {
+       from {
+           opacity: 0;
+           transform: translateY(10%);
+       }
+       to {
+           opacity: 1;
+           transform: none;
+       }
+   }
+   .fadeInUp {
+       animation-name: fadeInUp;
+   }
+   @keyframes pulse {
+       from {
+           transform: scale3d(1, 1, 1);
+       }
+       50% {
+           transform: scale3d(1.05, 1.05, 1.05);
+       }
+       to {
+           transform: scale3d(1, 1, 1);
+       }
+   }
+   .pulse {
+       animation-name: pulse;
+   }

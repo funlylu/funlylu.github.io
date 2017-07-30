@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+  <html class="ie7" lang="en-us">
+<![endif]-->
+<!--[if IE 8]>
+  <html class="ie8" lang="en-us">
+<![endif]-->
+<!--[if !IE]><!-->
+  <html class="noie" lang="en-us">
+<!--<![endif]-->
+	<head>
+		<meta charset="UTF-8">
+		<!--[if IE]>
+	      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+		<title>HTML条件注释</title>
+      <style>
+      	/*bass css*/
+		pre{
+		 width: 50%;
+		 border:1px solid #CCC;
+		 border-radius: 10px;
+		 padding: 20px;
+		 background-color: #eee;
+		 -webkit-box-shadow:  5px 5px 2px #B0E0E6;
+		 -moz-box-shadow: 5px 5px 2px #B0E0E6;
+		 box-shadow: 5px 5px 2px #B0E0E6;
+         word-wrap:break-word; 
+         word-break:break-all;
+		}
+      	
+      	
+      	
+      	/*ie7*/
+      	.ie7 .p{
+      		color:yellow;
+      		height:20px;
+      		background:green;
+      	}
+      	/*ie7*/
+      	
+      	/*ie8*/
+      	  .ie8 .p{
+      	  	color:#fff;
+      		background:red;
+      	  }
+      	/*ie8*/
+      </style>
+	</head>
+	<body>
+	  <p>对于不是很了解的这里有传送门<a href="http://www.cnblogs.com/dtdxrk/archive/2012/03/06/2381868.html">条件注释</a><a href="http://www.css88.com/book/css/hack/conditions.htm">条件注释</a></p>
+	   
+	 <pre>条件注释现在常用来解决IE浏览器的，通过条件注释为不同版本的ie浏览器（浏览器模式），插入带有相应版本标示的class的html标签。
+在写css代码的时候用这个class属性来针对不同版本的ie写不同的css代码</pre> 
+<pre>这样写的优点就是不用去考虑属性hack和选择器hack的各种奇葩的复杂的奇技淫巧。可读性和可维护性特别的优秀。<code style="color:red">但是需要注意的是:IE10及以上版本已将条件注释特性移除。</code></pre>
+
+    <p class="p">我是一个测试段落，在ie7和ie8上面为写了不同的样式。详情请右键查看。</p>
+    
+	</body>
+</html>

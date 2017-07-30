@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		 <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script>
+		 <script src="../../js/highcharts.js"></script><!--图表js文件-->
+         <script src="../../js/modules/exporting.js"></script><!--图表导出功能js文件-->
+		<script type="text/javascript">
+		
+$(function (){ 
+        $('#container').highcharts({
+		      chart: {
+                type: 'line' //图表数据序列显示时的默认类型
+            },
+		    //图表标题
+            title: {
+                text: 'Monthly Average Temperature',
+           
+            },
+            subtitle: {
+                text: 'Source: WorldClimate.com',
+              
+            },
+			
+            //坐标轴			
+            xAxis: {
+			     type:'category',//若坐标轴的类型设定为 分组类型那么必须给下面的categories赋值
+				 
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']//字符串类型的
+            },
+            yAxis:{
+					title:{
+						text: 'Temperature (°C)',//标题名称
+						offset:40,//相对于坐标轴的偏移量
+				        rotation:270
+						}, 
+						lineWidth:0,//默认为0，不显示数轴
+						lineColor:'red',
+						
+						plotLines: [{//标示线，一般在图标中显示方便使用者更快的查看符合条件的数据点
+							value: 10,//做为标准的数据的值
+							width: 2,//定义线的大小
+							color: '#7FFF00'//颜色
+						}]
+				},
+			
+			//提示框
+           tooltip: {//数据点提示框
+			     //可以在这里设置相关的额提示框属性
+                valueSuffix: '°C',//单位设定
+				shared:true,//多个数据序列是否共用一个数据提示框
+				animation:false,//是否动态显示
+				enabled:true //是否启用这个模块
+            },
+			
+            legend:{//图例布局相关属性的设置
+                layout: 'vertical',
+                align: 'left',
+				floating: true,
+				x:90,
+				y:100,
+                verticalAlign: 'top',
+                borderWidth: 1
+            },
+			
+			 //数据序列部分,需要注意数据的类型，只有数值类型的数据才能够在绘图区域上显示出来
+            series:[{
+                name: 'Tokyo',
+                data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            }, {
+                name: 'New York',
+                data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+            }, {
+                name: 'Berlin',
+                data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+            },{
+                name: 'London',
+                data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+            }]
+			
+        });
+    });
+		</script>
+	</head>
+	<body>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div><!--图表所在的层-->
+
+	</body>
+</html>

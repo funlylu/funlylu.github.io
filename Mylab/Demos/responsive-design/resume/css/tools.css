@@ -1,0 +1,80 @@
+/* ***************
+* 工具样式
+********* */
+
+
+/* 浮动带来的负面影响
+ 1.父级容器高度塌陷
+ 2.浮动元素会覆盖 它后面的元素
+ */
+
+
+/* 清除浮动 */
+
+clearfix {
+    z-index: *zoom: 1;
+    /* ie7 以下版本的浮动清除 */
+}
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: " ";
+    /* .clearfix:before 是为了防止当前元素和上外边距和它上面的上外边距的 
+    叠加这里我们称为空白崩溃如果没有这个需求不加也是可以的。*/
+}
+.clearfix:after {
+    clear: both;
+}
+
+/* 另外：触发父级元素的BFC 来清除浮动,
+下面的属性都可以触发父级元素的BFC*/
+
+
+/* .父级选择器 {
+    float: right;
+    overflow: hidden;
+    display: table;
+    display: table-caption;
+    display: inline-block;
+    display: table-cell;
+    overflow: auto;
+    position: fixed;
+}
+ */
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pull-right {
+    float: right !important;
+}
+.pull-left {
+    float: left !important;
+}
+.text-right {
+    text-align: right !important;
+}
+.text-left {
+    text-align: left !important;
+}
+.text-center {
+    text-align: center !important;
+}
+.hide {
+    display: none !important;
+}
+.show {
+    display: block !important;
+}
+.invisible {
+    visibility: hidden;
+}
+.text-hide {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}

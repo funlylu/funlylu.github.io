@@ -1,0 +1,72 @@
+    html,
+    body,
+    div,
+    span {
+        margin: 0;
+        padding: 0;
+    }
+    
+    html,
+    body {
+        height: 100%
+    }
+    
+    body {
+        background: -webkit-linear-gradient(right bottom, blue, black);
+        /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient( bottom right, blue, black);
+        /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient( bottom right, blue, black);
+        /* Firefox 3.6 - 15 */
+        background: linear-gradient( to bottom left, blue, black);
+        /* 标准的语法 */
+        /* padding: 50px; */
+        position: relative;
+    }
+    
+    .moon {
+        height: 100px;
+        width: 100px;
+        background: #fff;
+        border-radius: 50%;
+        position: absolute;
+    }
+    /* 
+关于box-shadow值的指定
+语法：box-shadow: h-shadow v-shadow blur spread color inset;
+兼容性：IE9+
+h-shadow    必需。水平阴影的位置。允许负值。  
+v-shadow    必需。垂直阴影的位置。允许负值。  
+blur    可选。模糊距离。  
+spread  可选。阴影的尺寸。 
+color   可选。阴影的颜色。请参阅 CSS 颜色值。 
+inset   可选。将外部阴影 (outset) 改为内部阴影。
+     */
+    
+    .moon-0 {
+        top: 200px;
+        left: 100px;
+        box-shadow: 0 0 0 10px yellow inset, 0 10px 10px 10px yellow, 0 10px 10px 10px #fff;
+    }
+    /* 内阴影和外阴影 */
+    
+    .moon-1 {
+        left: 300px;
+        top: 100px;
+        border: 1px solid red;
+        box-shadow: 0 0 10px 10px pink inset, 0 0 10px 10px pink;
+    }
+    /* 同心圆 :水平距离和垂直距离都是0*/
+    
+    .moon-2 {
+        top: 300px;
+        left: 500px;
+        box-shadow: 0 0 0 50px yellowgreen, 0 0 0 100px purple;
+    }
+    
+    .moon-3 {
+        /* background: transparent; */
+        top: 100px;
+        left: 60%;
+        box-shadow: 250px 50px 100px 100px yellow;
+    }

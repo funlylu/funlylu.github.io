@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<style type="text/css">
+		/*bass css*/
+		pre{
+		 width: 50%;
+		 border:1px solid #CCC;
+		 border-radius: 10px;
+		 padding: 20px;
+		 background-color: #eee;
+		 -webkit-box-shadow:  5px 5px 2px #B0E0E6;
+		 -moz-box-shadow: 5px 5px 2px #B0E0E6;
+		 box-shadow: 5px 5px 2px #B0E0E6;
+         word-wrap:break-word; 
+         word-break:break-all;
+		}
+		
+		/*demo css*/
+		 .list li{
+		 	list-style: none;
+		 	border: 1px solid #000;
+		 }
+		 .list li div{
+		 	float:left;
+		 	background: #98FB98;
+		 	border: 1px solid red;
+		 }
+		 
+		 .clearfix{
+		 	*zoom: 1;/*ie7以下版本清除浮动*/
+		 }
+		 .clearfix:after{
+		 	display: block;
+		 	content: "";
+		 	line-height: 0;
+		 	clear: both;
+		 }
+		 
+		 /*修复这个bug 只要给父级li设置文本对齐方式即可，一般设置top*/
+		.bugfix{
+			vertical-align: top;
+		}
+		 
+		 
+		</style>
+		<hr />
+		<pre>如何解决IE7及更早浏览器下当li中出现2个或以上的浮动时，li之间产生的空白间隙的BUG？</pre>
+		<h6>修复之前</h6>
+		<ul class="list">
+			<li class="clearfix"><div>芒果</div><div>芒果</div></li>
+			<li>西瓜</li>
+		</ul>
+		
+		<h6>修复之后</h6>
+		<ul class="list">
+			<li class="bugfix clearfix"><div>芒果</div><div>芒果</div></li>
+			<li>西瓜</li>
+		</ul>
+	</body>
+</html>
