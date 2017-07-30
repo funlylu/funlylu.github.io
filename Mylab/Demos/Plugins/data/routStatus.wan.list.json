@@ -1,1 +1,0 @@
-{"code":0,"msg":"","data":[{"id":1,"interface":"wan1","proto":"PPPoE","ip":"192.168.1.1","gateway":"113.227.208.1","dns":"202.96.64.68","tx":34,"rx":838,"status":0},{"id":2,"interface":"wan2","proto":"PPPoE","ip":"192.168.1.1","gateway":"113.227.208.1","dns":"202.96.64.68","tx":34,"rx":838,"status":1}]}
