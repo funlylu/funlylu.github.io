@@ -1,0 +1,9 @@
+# robots.txt generated at http://tool.chinaz.com/robots/ 
+User-agent: *
+Disallow: 
+Disallow: /js/
+Disallow: /sourceMd/
+Disallow: /lib/
+Disallow: /img/
+Sitemap: http://utopia-king.cn/sitemap.xml
+Sitemap: http://utopia-king.cn/sitemap.html
